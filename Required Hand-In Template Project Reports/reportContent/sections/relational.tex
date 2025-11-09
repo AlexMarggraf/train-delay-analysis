@@ -1,0 +1,10 @@
+\section*{Relational Schema}
+
+Stations (\uline{station\_id}, \uwave{location\_id}, name, original\_station\_code) \\
+Variables (\uline{variable\_id}, \uwave{observation\_id}, name, unit) \\
+WeatherObservations (\uline{observation\_id}, \uwave{station\_id}, value, quality\_flag, timestamp) \\
+Locations (\uline{location\_id}, region\_name, country\_code, altitude, latitude, longitude) \\
+TrainStations (\uline{trainstation\_id}, \uwave{location\_id}, name) \\
+TrainEvents (\uline{event\_id}, \uwave{trainstation\_id}, \uwave{service\_id}, delay, actual\_time, scheduled\_time) \\
+TrainServices (\uline{service\_id}, line\_name, train\_number) \\
+RailOperators (\uline{operator\_id}, \uwave{service\_id}, name, coutry\_code) \\
