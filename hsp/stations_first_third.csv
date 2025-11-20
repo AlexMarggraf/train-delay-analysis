@@ -1,0 +1,867 @@
+stationName,lat,long,crsCode,iataAirportCode,constituentCountry
+Abbey Wood,51.490719,0.120343,ABW,,england
+Aber,51.575363,-3.23089,ABE,,wales
+Abercynon,51.64262,-3.329549,ACY,,wales
+Aberdare,51.715019,-3.44313,ABA,,wales
+Aberdeen,57.143127,-2.097464,ABD,,scotland
+Aberdour,56.054646,-3.300575,AUR,,scotland
+Aberdovey,52.543934,-4.057118,AVY,,wales
+Abererch,52.898567,-4.37423,ABH,,wales
+Abergavenny,51.81665,-3.009679,AGV,,wales
+Abergele & Pensarn,53.294758,-3.581343,AGL,,wales
+Aberystwyth,52.414017,-4.081946,AYW,,wales
+Accrington,53.753193,-2.370016,ACR,,england
+Achanalt,57.609921,-4.914243,AAT,,scotland
+Achnasheen,57.579205,-5.072421,ACN,,scotland
+Achnashellach,57.482697,-5.333001,ACH,,scotland
+Acklington,55.307129,-1.651816,ACK,,england
+Acle,52.634647,1.543981,ACL,,england
+Acocks Green,52.449291,-1.81898,ACG,,england
+Acton Bridge,53.265961,-2.602689,ACB,,england
+Acton Central,51.508717,-0.263601,ACC,,england
+Acton Main Line,51.516865,-0.26762,AML,,england
+Adderley Park,52.483505,-1.854184,ADD,,england
+Addiewell,55.843449,-3.60655,ADW,,scotland
+Addlestone,51.372414,-0.48571,ASN,,england
+Adisham,51.241352,1.199277,ADM,,england
+Adlington (Cheshire),53.319542,-2.133571,ADC,,england
+Adlington (Lancashire),53.612926,-2.603084,ADL,,england
+Adwick,53.572994,-1.181465,AWK,,england
+Aigburth,53.364614,-2.927041,AIG,,england
+Ainsdale,53.601818,-3.042691,ANS,,england
+Aintree,53.473995,-2.956687,AIN,,england
+Airbles,55.782504,-3.994447,AIR,,scotland
+Airdrie,55.864029,-3.982952,ADR,,scotland
+Albany Park,51.435745,0.126427,AYP,,england
+Albrighton,52.637917,-2.268913,ALB,,england
+Alderley Edge,53.303762,-2.236812,ALD,,england
+Aldermaston,51.402047,-1.136972,AMT,,england
+Aldershot,51.246151,-0.760657,AHT,,england
+Aldrington,50.836601,-0.182151,AGT,,england
+Alexandra Palace,51.598225,-0.120129,AAP,,england
+Alexandra Parade,55.863724,-4.211465,AXP,,scotland
+Alexandria,55.98513,-4.577534,ALX,,scotland
+Alfreton,53.100414,-1.369689,ALF,,england
+Allens West,54.524128,-1.363418,ALW,,england
+Alloa,56.1179,-3.7872,ALO,,scotland
+Alness,57.694477,-4.249743,ASS,,scotland
+Alnmouth,55.392456,-1.636858,ALM,,england
+Alresford,51.853828,0.997114,ALR,,england
+Alsager,53.093054,-2.29861,ASG,,england
+Althorne,51.647526,0.753603,ALN,,england
+Althorpe,53.585262,-0.732558,ALP,,england
+Altnabreac,58.388439,-3.705279,ABC,,scotland
+Alton,51.151947,-0.967658,AON,,england
+Altrincham,53.3874,-2.347212,ALT,,england
+Alvechurch,52.346607,-1.967854,ALV,,england
+Ambergate,53.060501,-1.4807,AMB,,england
+Amberley,50.896507,-0.542446,AMY,,england
+Amersham,51.67439,-0.60613,AMR,,england
+Ammanford,51.795933,-3.996783,AMF,,wales
+Ancaster,52.987888,-0.535596,ANC,,england
+Anderston,55.859924,-4.271969,AND,,scotland
+Andover,51.212048,-1.493167,ADV,,england
+Anerley,51.41163,-0.064348,ANZ,,england
+Angmering,50.816704,-0.489559,ANG,,england
+Annan,54.98386,-3.262603,ANN,,scotland
+Anniesland,55.889553,-4.321684,ANL,,scotland
+Ansdell & Fairhaven,53.741558,-2.993077,AFV,,england
+Apperley Bridge,53.84138,-1.703065,APY,,england
+Appleby,54.58032,-2.486692,APP,,england
+Appledore (Kent),51.032623,0.816826,APD,,england
+Appleford,51.639562,-1.242375,APF,,england
+Appley Bridge,53.579029,-2.718906,APB,,england
+Apsley,51.732712,-0.463568,APS,,england
+Arbroath,56.559628,-2.588928,ARB,,scotland
+Ardgay,57.881119,-4.362604,ARD,,scotland
+Ardlui,56.302025,-4.721712,AUI,,scotland
+Ardrossan Harbour,55.640854,-4.823461,ADS,,scotland
+Ardrossan South Beach,55.640495,-4.799593,ASB,,scotland
+Ardrossan Town,55.639313,-4.812212,ADN,,scotland
+Ardwick,53.47134,-2.213893,ADK,,england
+Argyle Street,55.855938,-4.244574,AGS,,scotland
+Arisaig,56.912617,-5.839141,ARG,,scotland
+Arlesey,52.025938,-0.266178,ARL,,england
+Armadale,55.88639,-3.68504,ARM,,scotland
+Armathwaite,54.809611,-2.77209,AWT,,england
+Arnside,54.202114,-2.827783,ARN,,england
+Arram,53.884567,-0.426833,ARR,,england
+Arrochar & Tarbet,56.204021,-4.722822,ART,,scotland
+Arundel,50.848003,-0.546796,ARU,,england
+Ascot,51.406185,-0.675827,ACT,,england
+Ascott-Under-Wychwood,51.867376,-1.564136,AUW,,england
+Ash,51.249222,-0.711856,ASH,,england
+Ash Vale,51.272709,-0.721247,AHV,,england
+Ashburys,53.471761,-2.194991,ABY,,england
+Ashchurch for Tewkesbury,51.997158,-2.10921,ASC,,england
+Ashfield,55.889214,-4.2433,ASF,,scotland
+Ashford International,51.14335294,0.875167251,AFK,,england
+Ashford Surrey,51.436047,-0.469229,AFS,,england
+Ashington,55.182,-1.573,ASL,,england
+Ashley,53.355984,-2.341029,ASY,,england
+Ashley Down,51.4788,-2.5767,ASD,,england
+Ashtead,51.317822,-0.308126,AHD,,england
+Ashton-Under-Lyne,53.491264,-2.093415,AHN,,england
+Ashurst Kent,51.128601,0.152298,AHS,,england
+Ashurst New Forest,50.888865,-1.525097,ANF,,england
+Ashwell & Morden,52.030586,-0.10934,AWM,,england
+Askam,54.189049,-3.204545,ASK,,england
+Aslockton,52.951351,-0.898541,ALK,,england
+Aspatria,54.759338,-3.331752,ASP,,england
+Aspley Guise,52.020725,-0.631519,APG,,england
+Aston,52.505104,-1.871788,AST,,england
+Atherstone,52.578949,-1.552808,ATH,,england
+Atherton,53.528817,-2.478683,ATN,,england
+Attadale,57.394871,-5.456549,ATT,,scotland
+Attenborough,52.906322,-1.231262,ATB,,england
+Attleborough,52.514214,1.022719,ATL,,england
+Auchinleck,55.47031,-4.295389,AUK,,scotland
+Audley End,52.004398,0.20719,AUD,,england
+Aughton Park,53.55447,-2.895095,AUG,,england
+Aviemore,57.18914,-3.828348,AVM,,scotland
+Avoncliff,51.339596,-2.281342,AVF,,england
+Avonmouth,51.500194,-2.699332,AVN,,england
+Axminster,50.778976,-3.005613,AXM,,england
+Aylesbury,51.813868,-0.815048,AYS,,england
+Aylesbury Vale Parkway,51.8327,-0.8623,AVP,,england
+Aylesford,51.301384,0.465964,AYL,,england
+Aylesham,51.227185,1.209682,AYH,,england
+Ayr,55.458248,-4.626878,AYR,,scotland
+Bache,53.209312,-2.892386,BAC,,england
+Baglan,51.61549,-3.811182,BAJ,,wales
+Bagshot,51.364964,-0.688501,BAG,,england
+Baildon,53.849682,-1.753717,BLD,,england
+Baillieston,55.844761,-4.11454,BIO,,scotland
+Balcombe,51.05624,-0.137881,BAB,,england
+Baldock,51.993156,-0.188106,BDK,,england
+Balham,51.443169,-0.152403,BAL,,england
+Balloch Central,56.002983,-4.583539,BHC,,scotland
+Balmossie,56.475548,-2.83764,BSI,,scotland
+Bamber Bridge,53.726772,-2.660793,BMB,,england
+Bamford,53.338985,-1.689078,BAM,,england
+Banavie,56.84338,-5.095477,BNV,,scotland
+Banbury,52.060925,-1.327541,BAN,,england
+Bangor (Gwynedd),53.222902,-4.135505,BNG,,wales
+Bank Hall,53.437357,-2.987509,BAH,,england
+Banstead,51.329922,-0.214384,BAD,,england
+Barassie,55.5611,-4.651181,BSS,,scotland
+Bardon Mill,54.974636,-2.349922,BLL,,england
+Bare Lane,54.074473,-2.835331,BAR,,england
+Bargeddie,55.851776,-4.071789,BGI,,scotland
+Bargoed,51.692268,-3.229717,BGD,,wales
+Barking,51.539982,0.080804,BKG,,england
+Barking Riverside,51.519108,0.114764,BGV,,england
+Barlaston,52.942856,-2.168118,BRT,,england
+Barming,51.284904,0.479428,BMG,,england
+Barmouth,52.72287,-4.056641,BRM,,wales
+Barnehurst,51.464798,0.160885,BNH,,england
+Barnes,51.467014,-0.240711,BNS,,england
+Barnes Bridge,51.471676,-0.252051,BNI,,england
+Barnetby,53.574219,-0.409679,BTB,,england
+Barnham,50.831135,-0.639627,BAA,,england
+Barnhill,55.877895,-4.223463,BNL,,scotland
+Barnsley,53.553978,-1.477688,BNY,,england
+Barnstaple,51.073532,-4.064032,BNP,,england
+Barnt Green,52.361328,-1.994098,BTG,,england
+Barrhead,55.804535,-4.396411,BRR,,scotland
+Barrhill,55.097031,-4.781834,BRL,,scotland
+Barrow Haven,53.697128,-0.391427,BAV,,england
+Barrow Upon Soar,52.750244,-1.14956,BWS,,england
+Barrow-In-Furness,54.118879,-3.22614,BIF,,england
+Barry,51.396729,-3.285023,BRY,,wales
+Barry Docks,51.402393,-3.260749,BYD,,wales
+Barry Island,51.392361,-3.273405,BYI,,wales
+Barry Links,56.493206,-2.745444,BYL,,scotland
+Barton-On-Humber,53.688824,-0.443233,BAU,,england
+Basildon,51.568672,0.457309,BSO,,england
+Basingstoke,51.26804,-1.086896,BSK,,england
+Bat & Ball,51.289703,0.194258,BBL,,england
+Bath Spa,51.378059,-2.356302,BTH,,england
+Bathgate,55.898678,-3.644019,BHG,,scotland
+Batley,53.709129,-1.622734,BTL,,england
+Battersby,54.457687,-1.092945,BTT,,england
+Battersea Park,51.477272,-0.148151,BAK,,england
+Battle,50.91312,0.495169,BAT,,england
+Battlesbridge,51.624805,0.565826,BLB,,england
+Bayford,51.758808,-0.096074,BAY,,england
+Beaconsfield,51.611141,-0.643644,BCF,,england
+Bearley,52.244252,-1.750259,BER,,england
+Bearsden,55.917202,-4.332945,BRN,,scotland
+Bearsted,51.275589,0.57786,BSD,,england
+Beasdale,56.899624,-5.763864,BSL,,scotland
+Beaulieu Park,51.7574,0.5187,BPA,,england
+Beaulieu Road,50.854206,-1.505586,BEU,,england
+Beauly,57.478,-4.4698,BEL,,scotland
+Bebington,53.357651,-3.003659,BEB,,england
+Beccles,52.458481,1.569547,BCC,,england
+Beckenham Hill,51.424767,-0.016497,BEC,,england
+Beckenham Junction,51.411446,-0.027144,BKJ,,england
+Bedford,52.136175,-0.47945,BDM,,england
+Bedford St Johns,52.129299,-0.467348,BSJ,,england
+Bedhampton,50.853638,-0.996989,BDH,,england
+Bedminster,51.440037,-2.594184,BMT,,england
+Bedworth,52.479133,-1.46749,BEH,,england
+Bedwyn,51.379715,-1.599077,BDW,,england
+Beeston,52.920551,-1.207211,BEE,,england
+Bekesbourne,51.261051,1.136125,BKS,,england
+Belle Vue,53.462181,-2.180809,BLV,,england
+Bellgrove,55.857182,-4.22547,BLG,,scotland
+Bellingham,51.433826,-0.020421,BGM,,england
+Bellshill,55.816605,-4.025222,BLH,,scotland
+Belmont,51.344086,-0.199471,BLM,,england
+Belper,53.024555,-1.482622,BLP,,england
+Beltring,51.204651,0.403518,BEG,,england
+Belvedere,51.491936,0.152088,BVD,,england
+Bempton,54.128296,-0.180389,BEM,,england
+Ben Rhydding,53.926167,-1.797429,BEY,,england
+Benfleet,51.543964,0.561273,BEF,,england
+Bentham,54.115791,-2.510918,BEN,,england
+Bentley (Hampshire),51.180695,-0.868287,BTY,,england
+Bentley (South Yorkshire),53.542865,-1.148788,BYK,,england
+Bere Alston,50.485535,-4.200418,BAS,,england
+Bere Ferrers,50.450798,-4.181901,BFE,,england
+Berkhamsted,51.763638,-0.562498,BKM,,england
+Berkswell,52.395851,-1.642845,BKW,,england
+Bermuda Park,52.5029,-1.4726,BEP,,england
+Berney Arms,52.589745,1.63043,BYA,,england
+Berry Brow,53.622368,-1.797371,BBW,,england
+Berrylands,51.39838,-0.282157,BRS,,england
+Berwick (Sussex),50.840569,0.164587,BRK,,england
+Berwick-Upon-Tweed,55.774872,-2.01112,BWK,,england
+Bescar Lane,53.623531,-2.914703,BES,,england
+Bescot Stadium,52.562702,-1.991116,BSC,,england
+Betchworth,51.247993,-0.26771,BTO,,england
+Bethnal Green,51.524406,-0.059747,BET,,england
+Betws-Y-Coed,53.092056,-3.80091,BYC,,wales
+Beverley,53.842281,-0.423855,BEV,,england
+Bexhill,50.840679,0.475678,BEX,,england
+Bexley,51.440742,0.148248,BXY,,england
+Bexleyheath,51.463493,0.133471,BXH,,england
+Bicester North,51.903401,-1.150517,BCS,,england
+Bicester Village,51.893429,-1.148393,BIT,,england
+Bickley,51.40033,0.044272,BKL,,england
+Bidston,53.40913,-3.078589,BID,,england
+Biggleswade,52.085068,-0.260294,BIW,,england
+Bilbrook,52.623695,-2.186101,BBK,,england
+Billericay,51.628834,0.418656,BIC,,england
+Billingham,54.606327,-1.278525,BIL,,england
+Billingshurst,51.014938,-0.450348,BIG,,england
+Bingham,52.954536,-0.952044,BIN,,england
+Bingley,53.84803,-1.837327,BIY,,england
+Birchgrove,51.521687,-3.203502,BCG,,wales
+Birchington-On-Sea,51.377956,1.300781,BCH,,england
+Birchwood,53.41193,-2.52802,BWD,,england
+Birkbeck,51.403847,-0.056218,BIK,,england
+Birkdale,53.633514,-3.014742,BDL,,england
+Birkenhead Central,53.388244,-3.020897,BKC,,england
+Birkenhead Hamilton Square,53.39469,-3.01365,BKQ,,england
+Birkenhead North,53.404819,-3.057425,BKN,,england
+Birkenhead Park,53.397417,-3.03927,BKP,,england
+Birmingham International,52.450673,-1.725149,BHI,,england
+Birmingham Moor Street,52.479053,-1.892483,BMO,,england
+Birmingham New Street,52.478153,-1.898375,BHM,,england
+Birmingham Snow Hill,52.483555,-1.899833,BSW,,england
+Bishop Auckland,54.657482,-1.677545,BIA,,england
+Bishopbriggs,55.903927,-4.224958,BBG,,scotland
+Bishops Stortford,51.866692,0.16557,BIS,,england
+Bishopstone (Sussex),50.78,0.0824,BIP,,england
+Bishopton,55.902206,-4.501637,BPT,,scotland
+Bitterne,50.918343,-1.378279,BTE,,england
+Blackburn,53.746513,-2.479135,BBN,,england
+Blackheath,51.465706,0.008317,BKH,,england
+Blackhorse Road,51.586143,-0.04123,BHO,,england
+Blackpool North,53.822772,-3.049908,BPN,,england
+Blackpool Pleasure Beach,53.788154,-3.053856,BPB,,england
+Blackpool South,53.798611,-3.049081,BPS,,england
+Blackridge,55.88368,-3.75047,BKR,,scotland
+Blackrod,53.591522,-2.56954,BLK,,england
+Blackwater,51.33176,-0.777023,BAW,,england
+Blaenau Ffestiniog,52.996284,-3.944449,BFF,,wales
+Blair Atholl,56.765614,-3.85025,BLA,,scotland
+Blairhill,55.866653,-4.04221,BAI,,scotland
+Blake Street,52.605054,-1.844888,BKT,,england
+Blakedown,52.406147,-2.176365,BKD,,england
+Blantyre,55.7976,-4.086466,BLT,,scotland
+Blaydon,54.965813,-1.712578,BLO,,england
+Bleasby,53.041649,-0.942469,BSB,,england
+Bletchley,51.995339,-0.736368,BLY,,england
+Bloxwich,52.61853,-2.011783,BLX,,england
+Bloxwich North,52.625637,-2.019173,BWN,,england
+Blundellsands & Crosby,53.487675,-3.039889,BLN,,england
+Blythe Bridge,52.968124,-2.066966,BYB,,england
+Bodmin Parkway,50.445822,-4.663026,BOD,,england
+Bodorgan,53.204292,-4.418067,BOR,,wales
+Bognor Regis,50.786594,-0.676384,BOG,,england
+Bogston,55.937267,-4.713676,BGS,,scotland
+Bolton,53.573983,-2.425661,BON,,england
+Bolton-On-Dearne,53.518986,-1.312217,BTD,,england
+Bond Street,51.514,-0.15,BDS,,england
+Bookham,51.288334,-0.385224,BKA,,england
+Bootle (Cumbria),54.290249,-3.394818,BOC,,england
+Bootle New Strand,53.453357,-2.994676,BNW,,england
+Bootle Oriel Road,53.446559,-2.995791,BOT,,england
+Bordesley,52.471844,-1.877771,BBS,,england
+Borough Green & Wrotham,51.29295,0.306296,BRG,,england
+Borth,52.491001,-4.050236,BRH,,wales
+Bosham,50.843262,-0.846655,BOH,,england
+Boston,52.978802,-0.030949,BSN,,england
+Botley,50.916748,-1.258809,BOE,,england
+Bottesford,52.944962,-0.796012,BTF,,england
+Bourne End,51.576538,-0.711287,BNE,,england
+Bournemouth,50.727478,-1.863955,BMH,,england
+Bournville,52.426937,-1.926434,BRV,,england
+Bow Brickhill,52.003475,-0.696154,BWB,,england
+Bow Street,52.439914,-4.03036,BOW,,wales
+Bowes Park,51.607216,-0.119761,BOP,,england
+Bowling,55.931129,-4.493879,BWG,,scotland
+Box Hill & Westhumble,51.253376,-0.329128,BXW,,england
+Bracknell,51.413319,-0.751833,BCE,,england
+Bradford Forster Square,53.79575,-1.752505,BDQ,,england
+Bradford Interchange,53.791196,-1.749701,BDI,,england
+Bradford-On-Avon,51.345058,-2.252669,BOA,,england
+Brading,50.678509,-1.13801,BDN,,england
+Braintree,51.874989,0.558261,BTR,,england
+Braintree Freeport,51.869316,0.568258,BTP,,england
+Bramhall,53.359959,-2.162249,BML,,england
+Bramley (Hants),51.32988,-1.061265,BMY,,england
+Bramley (West Yorkshire),53.803532,-1.630985,BLE,,england
+Brampton (Cumbria),54.932655,-2.703814,BMP,,england
+Brampton (Suffolk),52.395397,1.543871,BRP,,england
+Branchton,55.940647,-4.803598,BCN,,scotland
+Brandon,52.454479,0.624116,BND,,england
+Branksome,50.727528,-1.919211,BSM,,england
+Braystones,54.43956,-3.543406,BYS,,england
+Bredbury,53.422939,-2.109823,BDY,,england
+Breich,55.827351,-3.668147,BRC,,scotland
+Brent Cross West,51.5687,-0.2269,BCZ,,england
+Brentford,51.487804,-0.309048,BFD,,england
+Brentwood,51.61322,0.30083,BRE,,england
+Bricket Wood,51.705223,-0.358846,BWO,,england
+Bridge of Allan,56.157429,-3.956166,BEA,,scotland
+Bridge of Orchy,56.515926,-4.763048,BRO,,scotland
+Bridgend,51.506481,-3.576296,BGN,,wales
+Bridgeton,55.849968,-4.226668,BDG,,scotland
+Bridgwater,51.128025,-2.99031,BWT,,england
+Bridlington,54.084545,-0.200659,BDT,,england
+Brierfield,53.824535,-2.236959,BRF,,england
+Brigg,53.549137,-0.486094,BGG,,england
+Brighouse,53.698734,-1.781855,BGH,,england
+Brighton,50.829659,-0.141234,BTN,,england
+Brimsdown,51.655224,-0.031022,BMD,,england
+Brinnington,53.431881,-2.134097,BNT,,england
+Bristol Parkway,51.514061,-2.53461,BPW,,england
+Bristol Temple Meads,51.449093,-2.581349,BRI,,england
+Brithdir,51.710266,-3.228765,BHD,,wales
+Briton Ferry,51.637852,-3.8193,BNF,,wales
+Brixton,51.463245,-0.114164,BRX,,england
+Broad Green,53.40654,-2.893267,BGE,,england
+Broadbottom,53.440968,-2.01653,BDB,,england
+Broadstairs,51.360653,1.43317,BSR,,england
+Brockenhurst,50.816708,-1.574112,BCU,,england
+Brockholes,53.597149,-1.770299,BHS,,england
+Brockley,51.464684,-0.037797,BCY,,england
+Brockley Whins,54.958672,-1.462749,BNR,,england
+Bromborough,53.322146,-2.987058,BOM,,england
+Bromborough Rake,53.329899,-2.989644,BMR,,england
+Bromley Cross,53.613743,-2.409614,BMC,,england
+Bromley North,51.408894,0.017325,BMN,,england
+Bromley South,51.399887,0.018374,BMS,,england
+Bromsgrove,52.322662,-2.048379,BMV,,england
+Brondesbury,51.545574,-0.203063,BSY,,england
+Brondesbury Park,51.540896,-0.209955,BSP,,england
+Brookmans Park,51.720955,-0.204811,BPK,,england
+Brookwood,51.303215,-0.635753,BKO,,england
+Broome,52.422745,-2.88524,BME,,england
+Broomfleet,53.740131,-0.673328,BMF,,england
+Brora,58.012657,-3.853251,BRA,,scotland
+Brough,53.726452,-0.578255,BUH,,england
+Broughty Ferry,56.467213,-2.873153,BYF,,scotland
+Broxbourne,51.745712,-0.011157,BXB,,england
+Bruce Grove,51.592918,-0.06982,BCV,,england
+Brundall,52.619747,1.439316,BDA,,england
+Brundall Gardens,52.623035,1.418896,BGA,,england
+Brunstane,55.94143,-3.10064,BSU,,scotland
+Brunswick,53.382153,-2.975665,BRW,,england
+Bruton,51.111584,-2.447103,BRU,,england
+Bryn,53.499893,-2.647233,BYN,,england
+Buckenham,52.59816,1.47013,BUC,,england
+Buckley,53.163021,-3.055948,BCK,,wales
+Bucknell,52.357525,-2.948551,BUK,,england
+Buckshaw Parkway,53.67283,-2.66447,BSV,,england
+Bugle,50.399979,-4.791736,BGL,,england
+Builth Road,52.169289,-3.427068,BHR,,wales
+Bulwell,52.999625,-1.196115,BLW,,england
+Bures,51.97094,0.769021,BUE,,england
+Burgess Hill,50.953552,-0.127749,BUG,,england
+Burley Park,53.808743,-1.576277,BUY,,england
+Burley-In-Wharfedale,53.908112,-1.753363,BUW,,england
+Burnage,53.421205,-2.215896,BNA,,england
+Burneside,54.355305,-2.766231,BUD,,england
+Burnham,51.523538,-0.647335,BNM,,england
+Burnham-On-Crouch,51.633526,0.813459,BUU,,england
+Burnley Barracks,53.791237,-2.258014,BUB,,england
+Burnley Central,53.793776,-2.244644,BNC,,england
+Burnley Manchester Road,53.784962,-2.248883,BYM,,england
+Burnside,55.817123,-4.204029,BUI,,scotland
+Burntisland,56.057133,-3.233214,BTS,,scotland
+Burscough Bridge,53.60519,-2.841758,BCB,,england
+Burscough Junction,53.598011,-2.840105,BCJ,,england
+Bursledon,50.882858,-1.304835,BUO,,england
+Burton Joyce,52.984047,-1.040698,BUJ,,england
+Burton-On-Trent,52.805798,-1.64246,BUT,,england
+Bury St Edmunds,52.253727,0.713355,BSE,,england
+Busby,55.780109,-4.262551,BUS,,scotland
+Bush Hill Park,51.642365,-0.06916,BHK,,england
+Bushey,51.644669,-0.384806,BSH,,england
+Butlers Lane,52.592376,-1.838163,BUL,,england
+Buxted,50.990475,0.131651,BXD,,england
+Buxton,53.26058,-1.913086,BUX,,england
+Byfleet & New Haw,51.349869,-0.480714,BFN,,england
+Bynea,51.67276,-4.098396,BYE,,wales
+Cadoxton,51.412422,-3.248087,CAD,,wales
+Caergwrle,53.107922,-3.033069,CGW,,wales
+Caerphilly,51.571903,-3.217805,CPH,,wales
+Caersws,52.516262,-3.43387,CWS,,wales
+Caldercruix,55.88791,-3.88978,CAC,,scotland
+Caldicot,51.58474,-2.760598,CDT,,wales
+Caledonian Road & Barnsbury,51.543301,-0.115177,CIR,,england
+Calstock,50.497487,-4.208665,CSK,,england
+Cam & Dursley,51.71701,-2.366194,CDU,,england
+Camberley,51.335911,-0.745328,CAM,,england
+Camborne,50.210392,-5.297921,CBN,,england
+Cambridge,52.194519,0.137584,CBG,,england
+Cambridge Heath,51.53157,-0.057997,CBH,,england
+Cambridge North,52.223333,0.157778,CMB,,england
+Cambuslang,55.819458,-4.173839,CBL,,scotland
+Camden Road,51.541889,-0.139764,CMD,,england
+Camelon,56.006775,-3.817015,CMO,,scotland
+Cameron Bridge,56.189693,-3.046855,CBX,,scotland
+Canada Water,51.49823,-0.05076,ZCW,,england
+Canary Wharf,51.5061,-0.01578,CWX,,england
+Canley,52.399418,-1.547232,CNL,,england
+Cannock,52.686768,-2.022158,CAO,,england
+Canonbury,51.548747,-0.091614,CNN,,england
+Canterbury East,51.275261,1.075434,CBE,,england
+Canterbury West,51.284279,1.074608,CBW,,england
+Cantley,52.578907,1.512899,CNY,,england
+Capenhurst,53.260155,-2.942908,CPU,,england
+Carbis Bay,50.19746,-5.463815,CBB,,england
+Cardenden,56.141308,-3.261651,CDD,,scotland
+Cardiff Bay,51.466324,-3.166049,CDB,,wales
+Cardiff Central,51.475193,-3.177794,CDF,,wales
+Cardiff Queen Street,51.482464,-3.170782,CDQ,,wales
+Cardonald,55.853252,-4.340297,CDO,,scotland
+Cardross,55.960163,-4.652782,CDR,,scotland
+Carfin,55.806938,-3.956112,CRF,,scotland
+Cark,54.177513,-2.972746,CAK,,england
+Carlisle,54.890675,-2.933833,CAR,,england
+Carlton,52.964573,-1.078357,CTO,,england
+Carluke,55.730408,-3.848761,CLU,,scotland
+Carmarthen,51.853233,-4.305732,CMN,,wales
+Carmyle,55.834053,-4.161873,CML,,scotland
+Carnforth,54.129688,-2.771244,CNF,,england
+Carnoustie,56.500618,-2.7066,CAN,,scotland
+Carntyne,55.854412,-4.17898,CAY,,scotland
+Carpenders Park,51.627885,-0.385578,CPK,,england
+Carrbridge,57.279873,-3.829541,CAG,,scotland
+Carshalton,51.367859,-0.16693,CSH,,england
+Carshalton Beeches,51.357117,-0.17023,CSB,,england
+Carstairs,55.69075,-3.668696,CRS,,scotland
+Cartsdyke,55.942261,-4.731633,CDY,,scotland
+Castle Bar Park,51.522865,-0.331575,CBP,,england
+Castle Cary,51.099583,-2.522683,CLC,,england
+Castleford,53.724171,-1.355852,CFD,,england
+Castleton,53.591804,-2.178125,CAS,,england
+Castleton Moor,54.467297,-0.947707,CSM,,england
+Caterham,51.282803,-0.078539,CAT,,england
+Catford,51.444706,-0.025701,CTF,,england
+Catford Bridge,51.444725,-0.027142,CFB,,england
+Cathays,51.488678,-3.178149,CYS,,wales
+Cathcart,55.817879,-4.261552,CCT,,scotland
+Cattal,53.997515,-1.319808,CTL,,england
+Causeland,50.405525,-4.466937,CAU,,england
+Cefn-Y-Bedd,53.098511,-3.031972,CYB,,wales
+Chadwell Heath,51.567905,0.128263,CTH,,england
+Chafford Hundred,51.502792,0.290938,CFH,,england
+Chalfont & Latimer,51.66835,-0.560646,CFO,,england
+Chalkwell,51.53883,0.6706,CHW,,england
+Chandlers Ford,50.983,-1.3845,CFR,,england
+Chapel-En-Le-Frith,53.312405,-1.918915,CEF,,england
+Chapeltown,53.464046,-1.466743,CLN,,england
+Chapleton,51.01577,-4.024398,CPN,,england
+Chappel & Wakes Colne,51.925312,0.758944,CWC,,england
+Charing,51.208649,0.790337,CHG,,england
+Charing Cross (Glasgow),55.865345,-4.270689,CHC,,scotland
+Charlbury,51.872929,-1.490133,CBY,,england
+Charlton,51.486904,0.030852,CTN,,england
+Chartham,51.256958,1.018303,CRT,,england
+Chassen Road,53.44605,-2.368171,CSR,,england
+Chatelherault,55.76521,-4.00466,CTE,,scotland
+Chatham,51.381161,0.520559,CTM,,england
+Chathill,55.536404,-1.706846,CHT,,england
+Cheadle Hulme,53.375956,-2.188125,CHU,,england
+Cheam,51.35601,-0.2148,CHE,,england
+Cheddington,51.857908,-0.662168,CED,,england
+Chelford,53.270744,-2.280375,CEL,,england
+Chelmsford,51.736595,0.469316,CHM,,england
+Chelsfield,51.35603,0.108373,CLD,,england
+Cheltenham Spa,51.896465,-2.100245,CNM,,england
+Chepstow,51.640137,-2.67193,CPW,,wales
+Cherry Tree,53.732868,-2.518401,CYT,,england
+Chertsey,51.387108,-0.509667,CHY,,england
+Cheshunt,51.702747,-0.023171,CHN,,england
+Chessington North,51.364483,-0.300661,CSN,,england
+Chessington South,51.356491,-0.308144,CSS,,england
+Chester,53.196815,-2.880152,CTR,,england
+Chester Road,52.535575,-1.832582,CRD,,england
+Chester-Le-Street,54.854885,-1.577847,CLS,,england
+Chesterfield,53.238209,-1.42011,CHD,,england
+Chestfield & Swalecliffe,51.360004,1.068182,CSW,,england
+Chetnole,50.866428,-2.574072,CNO,,england
+Chichester,50.831821,-0.783032,CCH,,england
+Chilham,51.244549,0.975937,CIL,,england
+Chilworth,51.21553,-0.523795,CHL,,england
+Chingford,51.63385,0.009955,CHI,,england
+Chinley,53.340275,-1.9444,CLY,,england
+Chippenham,51.462162,-2.115123,CPM,,england
+Chipstead,51.309444,-0.169259,CHP,,england
+Chirk,52.932793,-3.066708,CRK,,wales
+Chislehurst,51.405506,0.057437,CIT,,england
+Chiswick,51.4809,-0.267538,CHK,,england
+Cholsey,51.570135,-1.157942,CHO,,england
+Chorley,53.652428,-2.626693,CRL,,england
+Chorleywood,51.654188,-0.51846,CLW,,england
+Christchurch,50.738148,-1.784566,CHR,,england
+Christs Hospital,51.050629,-0.363538,CHH,,england
+Church & Oswaldtwistle,53.750431,-2.391216,CTW,,england
+Church Fenton,53.827671,-1.226652,CHF,,england
+Church Stretton,52.536606,-2.803485,CTT,,england
+Cilmeri,52.150936,-3.45719,CIM,,wales
+City Thameslink,51.514336,-0.103412,CTK,,england
+Clacton-On-Sea,51.793953,1.154134,CLT,,england
+Clandon,51.263832,-0.503622,CLA,,england
+Clapham (North Yorkshire),54.105392,-2.409858,CPY,,england
+Clapham High Street,51.46534,-0.1328,CLP,,england
+Clapham Junction,51.464134,-0.170281,CLJ,,england
+Clapton,51.56213,-0.056685,CPT,,england
+Clarbeston Road,51.852207,-4.88221,CLR,,wales
+Clarkston,55.789753,-4.275865,CKS,,scotland
+Claverdon,52.276424,-1.696566,CLV,,england
+Claygate,51.360664,-0.348207,CLG,,england
+Cleethorpes,53.56316,-0.029584,CLE,,england
+Cleland,55.804073,-3.909695,CEA,,scotland
+Clifton,53.522503,-2.314811,CLI,,england
+Clifton Down,51.46423,-2.611761,CFN,,england
+Clitheroe,53.87345,-2.394365,CLH,,england
+Clock House,51.408096,-0.041668,CLK,,england
+Clunderwen,51.8405,-4.731915,CUW,,wales
+Clydebank,55.900562,-4.403927,CYK,,scotland
+Coatbridge Central,55.863213,-4.032443,CBC,,scotland
+Coatbridge Sunnyside,55.866886,-4.027847,CBS,,scotland
+Coatdyke,55.864567,-4.005343,COA,,scotland
+Cobham & Stoke Dabernon,51.318077,-0.389917,CSD,,england
+Codsall,52.627262,-2.200891,CSL,,england
+Cogan,51.445396,-3.189974,CGN,,wales
+Colchester,51.900478,0.894085,COL,,england
+Colchester Town,51.886505,0.904055,CET,,england
+Coleshill Parkway,52.5164,-1.7081,CEH,,england
+Collingham,53.144047,-0.748588,CLM,,england
+Collington,50.839272,0.457142,CLL,,england
+Colne,53.85478,-2.181087,CNE,,england
+Colwall,52.080284,-2.357489,CWL,,england
+Colwyn Bay,53.296349,-3.725462,CWB,,wales
+Combe,51.832277,-1.392817,CME,,england
+Commondale,54.481018,-0.97514,COM,,england
+Congleton,53.157637,-2.192754,CNG,,england
+Conisbrough,53.48885,-1.234333,CNS,,england
+Connel Ferry,56.451981,-5.384973,CON,,scotland
+Conon Bridge,57.5617,-4.4404,CBD,,scotland
+Cononley,53.917351,-2.010631,CEY,,england
+Conway Park,53.386219,-3.026886,CNP,,england
+Conwy,53.280093,-3.83046,CNW,,wales
+Cooden Beach,50.83271,0.426969,COB,,england
+Cookham,51.556873,-0.721948,COO,,england
+Cooksbridge,50.903938,-0.010272,CBR,,england
+Coombe,50.44479,-4.481655,COE,,england
+Copplestone,50.814228,-3.751624,COP,,england
+Corbridge,54.966152,-2.017141,CRB,,england
+Corby,52.489196,-0.687944,COR,,england
+Corkerhill,55.836494,-4.323322,CKH,,scotland
+Corkickle,54.541657,-3.582155,CKL,,england
+Corpach,56.842724,-5.121662,CPA,,scotland
+Corrour,56.760181,-4.690966,CRR,,scotland
+Coryton,51.520512,-3.230858,COY,,wales
+Coseley,52.545738,-2.086051,CSY,,england
+Cosford,52.645031,-2.301479,COS,,england
+Cosham,50.841644,-1.068259,CSA,,england
+Cottingham,53.781826,-0.406402,CGM,,england
+Cottingley,53.767437,-1.588832,COT,,england
+Coulsdon South,51.315231,-0.13746,CDS,,england
+Coulsdon Town,51.32243,-0.13429,CDN,,england
+Coventry,52.400787,-1.513466,COV,,england
+Coventry Arena,52.447032,-1.494559,CAA,,england
+Cowden,51.155441,0.110653,CWN,,england
+Cowdenbeath,56.111679,-3.344314,COW,,scotland
+Cradley Heath,52.469177,-2.08976,CRA,,england
+Craigendoran,55.99485,-4.711291,CGD,,scotland
+Cramlington,55.088604,-1.598887,CRM,,england
+Cranbrook (Devon),50.7501,-3.4206,CBK,,england
+Craven Arms,52.441975,-2.837077,CRV,,england
+Crawley,51.111874,-0.187083,CRW,,england
+Crayford,51.448273,0.178826,CRY,,england
+Crediton,50.783375,-3.646912,CDI,,england
+Cressing,51.852028,0.580186,CES,,england
+Cressington,53.3588,-2.91172,CSG,,england
+Creswell,53.264008,-1.215865,CWD,,england
+Crewe,53.089607,-2.432987,CRE,,england
+Crewkerne,50.873337,-2.778815,CKN,,england
+Crews Hill,51.684334,-0.106441,CWH,,england
+Crianlarich,56.389652,-4.617778,CNR,,scotland
+Criccieth,52.918312,-4.236972,CCC,,wales
+Cricklewood,51.559227,-0.214071,CRI,,england
+Croftfoot,55.818455,-4.229643,CFF,,scotland
+Crofton Park,51.454777,-0.03678,CFT,,england
+Cromer,52.930595,1.292778,CMR,,england
+Cromford,53.112915,-1.548788,CMF,,england
+Crookston,55.84388,-4.36049,CKT,,scotland
+Cross Gates,53.804638,-1.451798,CRG,,england
+Crossflatts,53.858829,-1.844886,CFL,,england
+Crosshill,55.833225,-4.257648,COI,,scotland
+Crosskeys,51.621,-3.1261,CKY,,wales
+Crossmyloof,55.833626,-4.284813,CMY,,scotland
+Croston,53.66756,-2.777717,CSO,,england
+Crouch Hill,51.571205,-0.116907,CRH,,england
+Crowborough,51.046085,0.188422,COH,,england
+Crowhurst,50.888702,0.500984,CWU,,england
+Crowle,53.589725,-0.817042,CWE,,england
+Crowthorne,51.366356,-0.819194,CRN,,england
+Croy,55.955734,-4.035697,CRO,,scotland
+Crystal Palace,51.417603,-0.072899,CYP,,england
+Cuddington,53.23991,-2.599329,CUD,,england
+Cuffley,51.708675,-0.109761,CUF,,england
+Culham,51.653773,-1.236445,CUM,,england
+Culrain,57.919842,-4.405676,CUA,,scotland
+Cumbernauld,55.941326,-3.982089,CUB,,scotland
+Cupar,56.317043,-3.008772,CUP,,scotland
+Curriehill,55.901703,-3.317849,CUH,,scotland
+Custom House,51.509639,0.025894,CUS,,england
+Cuxton,51.374298,0.462693,CUX,,england
+Cwmbach,51.701885,-3.413774,CMH,,wales
+Cwmbran,51.656544,-3.016233,CWM,,wales
+Cynghordy,52.051689,-3.747095,CYN,,wales
+Dagenham Dock,51.526237,0.14505,DDK,,england
+Daisy Hill,53.539389,-2.516212,DSY,,england
+Dalgety Bay,56.044178,-3.354809,DAG,,scotland
+Dalmally,56.400272,-4.9832,DAL,,scotland
+Dalmarnock,55.839371,-4.21647,DAK,,scotland
+Dalmeny,55.986362,-3.381645,DAM,,scotland
+Dalmuir,55.911793,-4.427038,DMR,,scotland
+Dalreoch,55.947365,-4.578226,DLR,,scotland
+Dalry,55.705395,-4.711899,DLY,,scotland
+Dalston (Cumbria),54.846203,-2.988866,DLS,,england
+Dalston Junction,51.546139,-0.07544,DLJ,,england
+Dalston Kingsland,51.548035,-0.074594,DLK,,england
+Dalton,54.15424,-3.179031,DLT,,england
+Dalwhinnie,56.934334,-4.246498,DLW,,scotland
+Danby,54.466068,-0.910704,DNY,,england
+Danescourt,51.505199,-3.23332,DCT,,wales
+Danzey,52.324329,-1.819493,DZY,,england
+Darlington,54.520462,-1.54732,DAR,,england
+Darnall,53.381084,-1.410661,DAN,,england
+Darsham,52.272812,1.522343,DSM,,england
+Dartford,51.447548,0.217643,DFD,,england
+Darton,53.58836,-1.531646,DRT,,england
+Darwen,53.69804,-2.464958,DWN,,england
+Datchet,51.483303,-0.579978,DAT,,england
+Davenport,53.390719,-2.153234,DVN,,england
+Dawlish,50.580692,-3.464583,DWL,,england
+Dawlish Warren,50.599311,-3.443903,DWW,,england
+Deal,51.223129,1.398559,DEA,,england
+Dean,51.042629,-1.634802,DEN,,england
+Deansgate,53.473961,-2.250061,DGT,,england
+Deganwy,53.294739,-3.833424,DGY,,wales
+Deighton,53.669018,-1.751739,DHN,,england
+Delamere,53.228767,-2.666577,DLM,,england
+Denby Dale,53.572628,-1.663215,DBD,,england
+Denham,51.578495,-0.497633,DNM,,england
+Denham Golf Club,51.580544,-0.517774,DGC,,england
+Denmark Hill,51.468243,-0.089475,DMK,,england
+Dent,54.282597,-2.363987,DNT,,england
+Denton,53.457087,-2.131648,DTN,,england
+Deptford,51.478897,-0.02711,DEP,,england
+Derby,52.916381,-1.462555,DBY,,england
+Derby Road,52.04953,1.182332,DBR,,england
+Devonport,50.378132,-4.171534,DPT,,england
+Dewsbury,53.692089,-1.633487,DEW,,england
+Didcot Parkway,51.611275,-1.242614,DID,,england
+Digby & Sowton,50.716434,-3.474574,DIG,,england
+Dilton Marsh,51.248928,-2.207723,DMH,,england
+Dinas Powys,51.431614,-3.21839,DNS,,wales
+Dinas Rhondda,51.617073,-3.437123,DMG,,wales
+Dingle Road,51.440109,-3.179776,DGL,,wales
+Dingwall,57.594238,-4.422611,DIN,,scotland
+Dinsdale,54.51474,-1.467051,DND,,england
+Dinting,53.449382,-1.970276,DTG,,england
+Disley,53.358146,-2.042465,DSL,,england
+Diss,52.373096,1.123274,DIS,,england
+Dockyard,50.382553,-4.175957,DOC,,england
+Dodworth,53.545216,-1.530617,DOD,,england
+Dolau,52.295223,-3.263955,DOL,,wales
+Doleham,50.918686,0.610732,DLH,,england
+Dolgarrog,53.186123,-3.822808,DLG,,wales
+Dolwyddelan,53.052105,-3.884288,DWD,,wales
+Doncaster,53.521469,-1.140225,DON,,england
+Dorchester South,50.708752,-2.437593,DCH,,england
+Dorchester West,50.710526,-2.443274,DCW,,england
+Dore & Totley,53.327625,-1.514997,DOR,,england
+Dorking,51.241615,-0.323822,DKG,,england
+Dorking Deepdene,51.238918,-0.323921,DPD,,england
+Dorking West,51.236443,-0.339762,DKT,,england
+Dormans,51.15567,-0.005183,DMS,,england
+Dorridge,52.371861,-1.753209,DDG,,england
+Dove Holes,53.300005,-1.890678,DVH,,england
+Dover Priory,51.125988,1.304227,DVP,,england
+Dovercourt,51.938892,1.280724,DVC,,england
+Dovey Junction,52.564133,-3.925273,DVY,,wales
+Downham Market,52.60471,0.365751,DOW,,england
+Drayton Green,51.516326,-0.330089,DRG,,england
+Drayton Park,51.552124,-0.104723,DYP,,england
+Drem,56.005981,-2.785752,DRM,,scotland
+Driffield,54.001526,-0.434627,DRF,,england
+Drigg,54.376968,-3.444066,DRI,,england
+Droitwich Spa,52.26862,-2.158239,DTW,,england
+Dronfield,53.301357,-1.468768,DRO,,england
+Drumchapel,55.904926,-4.364204,DMC,,scotland
+Drumfrochar,55.941292,-4.774822,DFR,,scotland
+Drumgelloch,55.867233,-3.95114,DRU,,scotland
+Drumry,55.904495,-4.386583,DMY,,scotland
+Duddeston,52.488018,-1.871842,DUD,,england
+Dudley Port,52.524517,-2.049401,DDP,,england
+Duffield,52.987713,-1.486035,DFI,,england
+Duirinish,57.319847,-5.692103,DRN,,scotland
+Duke Street,55.859207,-4.212814,DST,,scotland
+Dullingham,52.200943,0.366197,DUL,,england
+Dumbarton Central,55.946705,-4.56697,DBC,,scotland
+Dumbarton East,55.942478,-4.55387,DBE,,scotland
+Dumbreck,55.841255,-4.309216,DUM,,scotland
+Dumfries,55.072395,-3.605261,DMF,,scotland
+Dumpton Park,51.345566,1.426291,DMP,,england
+Dunbar,55.998428,-2.514625,DUN,,scotland
+Dunblane,56.186001,-3.967296,DBL,,scotland
+Duncraig,57.336727,-5.637282,DCG,,scotland
+Dundee,56.456669,-2.970576,DEE,,scotland
+Dunfermline City,56.068233,-3.452033,DFE,,scotland
+Dunfermline Queen Margaret,56.080706,-3.42164,DFL,,scotland
+Dunkeld & Birnam,56.557301,-3.578097,DKD,,scotland
+Dunlop,55.711926,-4.532435,DNL,,scotland
+Dunrobin Castle,57.986111,-3.946595,DNO,,scotland
+Dunston,54.952164,-1.648648,DOT,,england
+Dunton Green,51.296425,0.171616,DNG,,england
+Durham,54.779408,-1.581746,DHM,,england
+Durrington-On-Sea,50.817463,-0.411463,DUR,,england
+Dyce,57.205002,-2.191978,DYC,,scotland
+Dyffryn Ardudwy,52.78857,-4.104242,DYF,,wales
+Eaglescliffe,54.529449,-1.349426,EAG,,england
+Ealing Broadway,51.51466,-0.300843,EAL,,england
+Earlestown,53.451139,-2.637674,ERL,,england
+Earley,51.441051,-0.917989,EAR,,england
+Earlsfield,51.441929,-0.188423,EAD,,england
+Earlswood (Surrey),51.227631,-0.171078,ELD,,england
+Earlswood (West Midlands),52.366638,-1.861907,EWD,,england
+East Boldon,54.9468,-1.420767,EBL,,england
+East Croydon,51.375679,-0.093335,ECR,,england
+East Didsbury,53.410206,-2.22111,EDY,,england
+East Dulwich,51.460911,-0.081151,EDW,,england
+East Farleigh,51.255112,0.48498,EFL,,england
+East Garforth,53.791622,-1.363933,EGF,,england
+East Grinstead,51.126213,-0.017887,EGR,,england
+East Kilbride,55.765388,-4.18199,EKL,,scotland
+East Linton,55.9856,-2.6579,ELT,,scotland
+East Malling,51.285748,0.439308,EML,,england
+East Midlands Parkway,52.862,-1.263,EMD,,england
+East Tilbury,51.485065,0.412479,ETL,,england
+East Worthing,50.822071,-0.354517,EWR,,england
+Eastbourne,50.769085,0.281847,EBN,,england
+Eastbrook,51.437126,-3.207031,EBK,,wales
+Easterhouse,55.860157,-4.107389,EST,,scotland
+Eastham Rake,53.307532,-2.9812,ERA,,england
+Eastleigh,50.968559,-1.350563,ESL,,england
+Eastrington,53.75481,-0.786612,EGN,,england
+Ebbsfleet International,51.443009,0.320887,EBD,,england
+Ebbw Vale Parkway,51.7573,-3.1965,EBV,,wales
+Ebbw Vale Town,51.782007,-3.205996,EBB,,wales
+Eccles,53.485443,-2.333014,ECC,,england
+Eccles Road,52.470585,0.969656,ECS,,england
+Eccleston Park,53.430665,-2.780555,ECL,,england
+Edale,53.36477,-1.817395,EDL,,england
+Eden Park,51.390762,-0.026587,EDN,,england
+Edenbridge,51.208508,0.060099,EBR,,england
+Edenbridge Town,51.200287,0.06689,EBT,,england
+Edge Hill,53.402663,-2.946986,EDG,,england
+Edinburgh Gateway,55.941,-3.32,EGY,,scotland
+Edinburgh Park,55.927615,-3.307829,EDP,,scotland
+Edinburgh Waverley,55.952442,-3.188236,EDB,,scotland
+Edmonton Green,51.623802,-0.059665,EDR,,england
+Effingham Junction,51.291504,-0.419536,EFF,,england
+Eggesford,50.887848,-3.875235,EGG,,england
+Egham,51.428925,-0.545701,EGH,,england
+Egton,54.437679,-0.761896,EGT,,england
+Elephant & Castle,51.494469,-0.098462,EPH,,england
+Elgin,57.64299,-3.31163,ELG,,scotland
+Ellesmere Port,53.282097,-2.895403,ELP,,england
+Elmers End,51.398335,-0.049263,ELE,,england
+Elmstead Woods,51.417435,0.043594,ESD,,england
+Elmswell,52.238201,0.911625,ESW,,england
+Elsecar,53.498924,-1.428617,ELR,,england
+Elsenham,51.92038,0.22779,ESM,,england
+Elstree & Borehamwood,51.652836,-0.279779,ELS,,england
+Eltham,51.455101,0.0496,ELW,,england
+Elton & Orston,52.951843,-0.855362,ELO,,england
+Ely,52.390846,0.266105,ELY,,england
+Emerson Park,51.56889,0.220658,EMP,,england
+Emsworth,50.851326,-0.938784,EMS,,england
+Energlyn & Churchill Park,51.5838,-3.2287,ECP,,wales
+Enfield Chase,51.652607,-0.090404,ENC,,england
+Enfield Lock,51.671379,-0.028875,ENL,,england
+Enfield Town,51.651524,-0.078891,ENF,,england
+Entwistle,53.655591,-2.413983,ENT,,england
+Epsom,51.334339,-0.268756,EPS,,england
+Epsom Downs,51.321365,-0.243411,EPD,,england
+Erdington,52.528435,-1.839297,ERD,,england
+Eridge,51.089024,0.200452,ERI,,england
+Erith,51.481621,0.174651,ERH,,england
+Esher,51.379642,-0.354714,ESH,,england
+Eskbank,55.88956,-3.07845,EKB,,scotland
+Essex Road,51.540302,-0.096552,EXR,,england
+Etchingham,51.010479,0.441935,ETC,,england
+Euxton Balshaw Lane,53.670071,-2.675045,EBA,,england
+Evesham,52.098793,-1.947413,EVE,,england
+Ewell East,51.345612,-0.24106,EWE,,england
+Ewell West,51.349445,-0.256711,EWW,,england
+Exeter Central,50.726471,-3.532973,EXC,,england
+Exeter St Davids,50.729019,-3.544387,EXD,,england
+Exeter St Thomas,50.716529,-3.538759,EXT,,england
+Exhibition Centre,55.860619,-4.283207,EXG,,scotland
+Exmouth,50.620937,-3.415035,EXM,,england
+Exton,50.668255,-3.443337,EXN,,england
+Eynsford,51.362377,0.203465,EYN,,england
+Fairbourne,52.696018,-4.049464,FRB,,wales
+Fairfield,53.471215,-2.14581,FRF,,england
+Fairlie,55.752514,-4.853834,FRL,,scotland
+Fairwater,51.491714,-3.232963,FRW,,wales
+Falconwood,51.459087,0.078571,FCN,,england
+Falkirk Grahamston,56.002735,-3.786359,FKG,,scotland
+Falkirk High,55.991863,-3.792276,FKK,,scotland
+Falls of Cruachan,56.386242,-5.114992,FOC,,scotland
+Falmer,50.862064,-0.087364,FMR,,england
+Falmouth Docks,50.15075,-5.0559,FAL,,england
+Falmouth Town,50.148392,-5.065443,FMT,,england
+Fareham,50.853352,-1.19162,FRM,,england
+Farnborough Main,51.296471,-0.756436,FNB,,england
+Farnborough North,51.301723,-0.743385,FNN,,england
+Farncombe,51.197639,-0.604522,FNC,,england
+Farnham,51.211422,-0.793093,FNH,,england
+Farningham Road,51.401337,0.235533,FNR,,england
+Farnworth,53.549999,-2.387857,FNW,,england
+Farringdon,51.520071,-0.104665,ZFD,,england
+Fauldhouse,55.822163,-3.719006,FLD,,scotland
