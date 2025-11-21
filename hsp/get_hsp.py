@@ -23,10 +23,9 @@ headers = {
     'Content-Type': 'application/json'
 }
 
-from_date = '2024-09-02'  # YYYY-MM-DD
-to_date = '2024-09-12'
+from_date = '2024-09-01'  # YYYY-MM-DD
+to_date = '2025-03-01'
 
-# Read CRS codes from CSV
 crs_list = []
 
 with open('trainlines-10.csv', 'r', newline='') as file:
@@ -40,10 +39,8 @@ details_folder_path = 'train_details'
 os.makedirs(rid_folder_path, exist_ok=True)
 os.makedirs(details_folder_path, exist_ok=True)
 
-# Worker function for fetching service metrics
 def get_hsp_data(task):
     from_crs, to_crs, from_time, to_time, weekday = task
-    #time.sleep(np.random.uniform(0.5, 1.5))
 
     all_failed_rids = []
     all_failed_details = []
@@ -62,11 +59,11 @@ def get_hsp_data(task):
     rid_list = []
     attempt = 1
 
-    while True:
+    while attempt < 6:
         try:
             with request_rights:
                 response = requests.post(metrics_url, json=payload, headers=headers)
-                print(response.status_code)
+            # print(response.status_code)
 
             if response.ok:
                 rid_json = response.json()
@@ -92,39 +89,47 @@ def get_hsp_data(task):
                     with open(file_path, 'w') as f2:
                         json.dump(combined, f2, indent=2)
                 
-                print('done with', from_crs, to_crs, from_time, to_time, weekday)
+                #print('done with', from_crs, to_crs, from_time, to_time, weekday)
                 break
-            elif response.status_code == 503:
-                time.sleep(np.random.uniform(1.8, 2.2)*attempt)
             else:
                 all_failed_rids.append([from_crs, to_crs, weekday])
-                break
             
             attempt += 1
-
         except requests.exceptions.RequestException:
             all_failed_rids.append([from_crs, to_crs, weekday])
             break
 
-    print(all_failed_rids, all_failed_details)
+    if attempt == 6:
+        all_failed_rids.append([from_crs, to_crs, weekday])
+
+    #print(all_failed_rids, all_failed_details)
     return all_failed_rids, all_failed_details
 
 # Worker function for fetching service details
 def get_train_details(rid):
     details_json = None
     failed_local = []
+    attempt = 1
 
-    try:
-        with request_rights:
-            response = requests.post(details_url, json={'rid': rid}, headers=headers)
+    while attempt < 6:
+        try:
+            with request_rights:
+                response = requests.post(details_url, json={'rid': rid}, headers=headers)
 
-        if response.ok:
-            details_json = response.json()
-        else:
+            if response.ok:
+                details_json = response.json()
+                break
+            else:
+                failed_local.append([rid])
+            
+            attempt += 1
+        except requests.exceptions.RequestException:
             failed_local.append([rid])
-    except requests.exceptions.RequestException:
-        failed_local.append([rid])
+            break
     
+    if attempt == 6:
+        failed_local.append([rid])
+
     return details_json, failed_local
 
 def init_worker(shared_semaphore):
@@ -132,8 +137,6 @@ def init_worker(shared_semaphore):
     request_rights = shared_semaphore
 
 if __name__ == '__main__':
-    print(from_date, to_date)
-
     times = [("0000", "0759"), ("0800", "1559"), ("1600", "2359")]
     weekdays = ['WEEKDAY', 'SATURDAY', 'SUNDAY']
 
@@ -145,9 +148,6 @@ if __name__ == '__main__':
                 tasks.append((from_crs, to_crs, from_time, to_time, weekday))
                 tasks.append((to_crs, from_crs, from_time, to_time, weekday))
 
-    """ for task in tasks:
-        failed_rid = get_hsp_data(task) """
-
     manager = Manager()
     failed_rid = manager.list()
     failed_details = manager.list()
@@ -156,8 +156,11 @@ if __name__ == '__main__':
     failed_rid.append(['from', 'to', 'day'])
     failed_details.append(['rid'])
 
-    with Pool(initializer=init_worker, initargs=(request_rights,)) as pool:
+    start = time.time()
+    with Pool(processes=6, initializer=init_worker, initargs=(request_rights,)) as pool:
         results = pool.map(get_hsp_data, tasks)
+    end = time.time()
+    print('elapsed:', end - start)
 
     rid_failed_local, details_failed_local = zip(*results)
 
