@@ -24,12 +24,12 @@ headers = {
 }
 
 from_date = '2024-09-01'  # YYYY-MM-DD
-to_date = '2024-09-03'
+to_date = '2025-03-01'
 
 crs_list = []
 
 # get start and end points of all train lines, specify your file here
-file_name = 'trainlines-alex.csv'
+file_name = 'trainlines-1.csv'
 with open(file_name, 'r', newline='') as file:
     reader = csv.DictReader(file)
     for row in reader:
@@ -71,7 +71,7 @@ def get_hsp_data(task):
             with request_rights:
                 # the actual https request
                 response = requests.post(metrics_url, json=payload, headers=headers)
-            # print(response.status_code)
+            print(response.status_code)
 
             # if request worked out
             if response.ok:
