@@ -12,6 +12,7 @@ if __name__ == "__main__":
 
     cur = conn.cursor()
     
+    # Insert data into database
     with open("trainstation_weatherstation.csv", "r", encoding="utf-8") as f:
         cur.copy_expert(
             f"""

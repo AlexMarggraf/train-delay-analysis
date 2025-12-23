@@ -127,25 +127,9 @@ if __name__ == "__main__":
         for item in failed_ch:
             writer.writerow([item])
 
+    # Create lookup table
     find_weatherstation(df_train_weather, df_train_de, df_weather_de, df_train_ch, df_weather_ch)
-    print("assigned trainstations to weatherstations")\
+    print("assigned trainstations to weatherstations")
     
     df_train_weather.to_csv('trainstation_weatherstation.csv', index = False)
-    
-    with open("trainstation_weatherstation.csv", "r", encoding="utf-8") as f:
-        cur.copy_expert(
-            f"""
-            COPY {"trainstation_weatherstation"}
-            FROM STDIN
-            WITH (
-                FORMAT csv,
-                HEADER true,
-                DELIMITER ','
-            )
-            """,
-            f
-        )
-    print("loaded data into database")
-    
-    conn.commit()
     conn.close()
