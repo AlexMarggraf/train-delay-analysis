@@ -7,35 +7,16 @@ from scipy.spatial import cKDTree
 import numpy as np
 
 
-def augment_train_de(df_train_de: pd.DataFrame):
+def augment_train(df_train: pd.DataFrame):
     geolocator = Nominatim(user_agent="trainstation_locator")
     failed = []
 
-    for index, row in df_train_de.iterrows():
+    for index, row in df_train.iterrows():
         location = geolocator.geocode(row["station_name"])
 
         if location:
-            df_train_de.loc[index, 'station_latitude'] = location.latitude
-            df_train_de.loc[index, 'station_longitude'] = location.longitude
-            print(f"found {row["station_name"]}")
-        else:
-            failed.append(row["station_name"])
-            print(f"failed to find {row["station_name"]}")
-
-        time.sleep(1) # This is nessecary to uphold the usage policy of Nominatim
-
-    return failed
-
-def augment_train_ch(df_train_ch: pd.DataFrame):
-    geolocator = Nominatim(user_agent="trainstation_locator")
-    failed = []
-
-    for index, row in df_train_ch.iterrows():
-        location = geolocator.geocode(row["station_name"])
-
-        if location:
-            df_train_ch.loc[index, 'station_latitude'] = location.latitude
-            df_train_ch.loc[index, 'station_longitude'] = location.longitude
+            df_train.loc[index, 'station_latitude'] = location.latitude
+            df_train.loc[index, 'station_longitude'] = location.longitude
             print(f"found {row["station_name"]}")
         else:
             failed.append(row["station_name"])
@@ -133,8 +114,8 @@ if __name__ == "__main__":
     })
 
     # Augment train data
-    failed_de = augment_train_de(df_train_de)
-    failed_ch = augment_train_ch(df_train_ch)
+    failed_de = augment_train(df_train_de)
+    failed_ch = augment_train(df_train_ch)
 
     with open("failed_train_de.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
