@@ -5,4 +5,24 @@
 % ER Diagramm und Logisches Schema der integrierten Datenbank
 % und alle cleaning/normalization Schritte
 
-%
+% - ch-train one big dataset -> trainstation with bpuic pk, trainstop with generated pk, trainline with line_id, trip_identifier, operating_day pk
+% - ch-weather two datasets -> weatherstation with station_abbr pk, measurement with station_abbr, timestamp pk
+% - de-train one big dataset -> trainstation with eva pk, trainstop with stop_id pk, trainline with trainline_ride_id, final_destination_station, train_name pk
+% - de_weather many files -> weatherstation with station_id pk, 4 measurement with station_id, timestamp pk
+% - lookup tabel from trainstation to weatherstation
+
+% - ch-train Load csv, filter for trains, filter for required columns, load last stop id,
+%   augment trainstation data csv, augment operator csv, formate date for line and store in csv,
+%   generate id for trainstop format date and store in csv, store last stop id, final dedublication
+% - ch-weather load csv, format time, filter for correct timespan, filter for required columns,
+%   store in csv
+% - de-train convert parquet to csv, load csv , filter for required column, augment trainstation csv,
+%   augment trainline csv, store trainstop in csv, final dedublication
+% - de-weather load data, remove whitespaces, filter for correct timespan,
+%   filter for required columns, set impossible datapoints to nan, format date, store in csv,
+%   prec cast wrtr from float to int, cast rs_ind from int to boolean, wind cast d from float to int,
+%   load station metadata file, remove whitespaces, keep only last recorded station,
+%   filter for last recorded date, format date, filter for required columns, augment weatherstation csv,
+%   final deduplication,
+
+% - use copy to integrate data into database
