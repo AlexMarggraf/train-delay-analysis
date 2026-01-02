@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
     # Load failed trainstations
     df_train = pd.read_csv(
-        "failed_train.csv",
+        "manual_train.csv",
         dtype={
             "station_name": str,
             "station_latitude": float,

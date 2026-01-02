@@ -17,7 +17,18 @@ def augment_train(df_train: pd.DataFrame):
         if location:
             df_train.loc[index, 'station_latitude'] = location.latitude
             df_train.loc[index, 'station_longitude'] = location.longitude
-            print(f"found {row["station_name"]}")
+
+            country = location.raw.get("display_name", {}).split()[-1]
+
+            if country == "Deutschland":
+                df_train.loc[index, 'trainstation_in_ch'] = False
+            elif "Schweiz" in country:
+                df_train.loc[index, 'trainstation_in_ch'] = True
+            else:
+                print(f"trainstation in location {country}")
+                df_train.loc[index, 'trainstation_in_ch'] = np.nan
+
+            print(f"found {row["station_name"]} with coords {location.latitude}, {location.longitude}")
         else:
             failed.append(row["station_name"])
             print(f"failed to find {row["station_name"]}")
@@ -77,7 +88,9 @@ if __name__ == "__main__":
     df_train_de = pd.read_sql_query(get_german_trainstation , conn)
 
     df_train_de = df_train_de.rename(columns={"eva": "trainstation_id"})
-    df_train_de["trainstation_id"] = df_train_de["trainstation_id"].astype(str)
+    df_train_de["trainstation_id"] = df_train_de["trainstation_id"].astype(str).str.zfill(8)
+
+    print(df_train_de)
 
     df_train_de["station_latitude"] = None
     df_train_de["station_longitude"] = None
@@ -88,7 +101,7 @@ if __name__ == "__main__":
     df_weather_de = df_weather_de.rename(columns={"station_id": "weatherstation_id"})
     df_weather_de["weatherstation_id"] = df_weather_de["weatherstation_id"].astype(str)
 
-    df_weather_de["weatherstation_in_ch"] = "False"
+    df_weather_de["weatherstation_in_ch"] = False
 
     df_train_ch = pd.read_sql_query(get_swiss_trainstation, conn)
 
@@ -116,6 +129,9 @@ if __name__ == "__main__":
     # Augment train data
     failed_de = augment_train(df_train_de)
     failed_ch = augment_train(df_train_ch)
+
+    df_train_de = df_train_de.dropna(subset=["trainstation_in_ch"])
+    df_train_de = df_train_ch.dropna(subset=["trainstation_in_ch"])
 
     with open("failed_train_de.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
