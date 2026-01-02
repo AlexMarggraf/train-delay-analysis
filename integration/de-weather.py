@@ -288,7 +288,7 @@ def station_metadata(file):
     if df_master["bis_datum"].iat[-1] is not None and df_master["bis_datum"].iat[-1] < 20240901:
         return
 
-    # Load already exisitng weatherstations into a dataframe
+    # Load already existing weatherstations into a dataframe
     df_ws = pd.read_csv(
         r"german_weatherstation.csv",
         sep=',',
