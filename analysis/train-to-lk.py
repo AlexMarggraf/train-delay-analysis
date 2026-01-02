@@ -40,7 +40,7 @@ def train_to_lk(df_train: pd.DataFrame, ch=True):
     )
 
     if ch:
-        shape = gpd.read_file("analysis/ch/swissBOUNDARIES3D_1_5_TLM_BEZIRKSGEBIET.shp").to_crs("EPSG:4326")
+        shape = gpd.read_file("analysis\ch\swissBOUNDARIES3D_1_5_TLM_KANTONSGEBIET.shp").to_crs("EPSG:4326")
     else:
         shape = gpd.read_file("analysis/de/VG2500_KRS.shp").to_crs("EPSG:4326")
 
@@ -48,7 +48,7 @@ def train_to_lk(df_train: pd.DataFrame, ch=True):
         gdf_train,
         shape,
         how="inner",
-        predicate="within"
+        predicate="intersects"
     )
 
     return mapping
@@ -112,6 +112,8 @@ if __name__ == "__main__":
 
     _ = augment_train(df_train_de)
     _ = augment_train(df_train_ch)
+
+    print(df_train_ch)
 
     map_de = train_to_lk(df_train_de, ch=False)
     map_ch = train_to_lk(df_train_ch, ch=True)
