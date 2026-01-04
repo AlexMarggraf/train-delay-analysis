@@ -224,11 +224,9 @@ print(country_stats)
 
 # Optional: save for report
 country_stats.to_csv(
-    "../report/delay_per_country.csv",
+    "../report/analysis_results/delay_per_country.csv",
     index=False
 )
-
-
 
 # ============================================================
 # 5. WEATHER EFFECT
@@ -253,7 +251,7 @@ print("\n=== WEATHER EFFECT (MEAN DELAYS) ===")
 print(weather_summary)
 
 weather_summary.to_csv(
-    "../report/weather_effect_summary.csv"
+    "../report/analysis_results/weather_effect_summary.csv"
 )
 
 # ============================================================
@@ -291,12 +289,12 @@ mw_df = pd.DataFrame(mw_results)
 print(mw_df)
 
 mw_df.to_csv(
-    "../report/mann_whitney_weather_effect.csv",
+    "../report/analysis_results/mann_whitney_weather_effect.csv",
     index=False
 )
 
 # ============================================================
-# 7. REGRESSION MODEL Note: Siwtzerland is baseline, thats why there is no country_CH in the result
+# 7. REGRESSION MODEL Note: Switzerland is baseline, that's why there is no country_CH in the result
 # ============================================================
 
 print("\n=== REGRESSION MODEL ===")
@@ -317,9 +315,8 @@ reg_summary = pd.DataFrame({
 })
 
 reg_summary.to_csv(
-    "../report/regression_results.csv"
+    "../report/analysis_results/regression_results.csv"
 )
-
 
 # Helper function for 95% confidence interval
 
@@ -334,6 +331,29 @@ def mean_ci(series, z=1.96):
   half_width = z * std / np.sqrt(n)
   return pd.Series([mean, mean - half_width, mean + half_width])
 
+def prepare_plot_data(df, category_col, country_col="country_x"):
+    categories = df[category_col].dropna().unique()
+    categories = sorted(categories, key=str)
+
+    plot_data = {}
+    for country in ["DE", "CH"]:
+        sub = (
+            df[df[country_col] == country]
+            .set_index(category_col)
+            .reindex(categories)
+        )
+        plot_data[country] = sub
+
+    return categories, plot_data
+
+
+COLOR_CH = "#1f77b4"  # blue
+COLOR_DE = "#ff7f0e"  # orange
+
+COUNTRY_COLORS = {
+    "Germany": COLOR_DE,
+    "Switzerland": COLOR_CH
+}
 
 # ============================================================
 # 8. DELAY PER WEATHER (PRECIPITATION BINS, DE vs CH)
@@ -355,41 +375,64 @@ df["weather_type"] = df.apply(classify_weather, axis=1)
 
 weather_stats = (
     df.groupby(["weather_type", "country_x"])["delay_minutes"]
-      .mean()
-      .unstack("country_x")
-      .rename(columns={
-          "DE": "mean_delay_DE",
-          "CH": "mean_delay_CH"
-      })
-      .reset_index()
+      .apply(mean_ci)
+      .unstack()
 )
 
-print("\n=== DELAY PER WEATHER TYPE (DE vs CH) ===")
-print(weather_stats)
+weather_stats.columns = ["mean_delay", "ci_lower", "ci_upper"]
+weather_stats = weather_stats.reset_index()
 
-# Export table
 weather_stats.to_csv(
-    "../report/delay_per_weather_type_de_ch.csv",
+    "../report/analysis_results/delay_per_weather.csv",
     index=False
 )
 
 # Bar chart
-ax = weather_stats.set_index("weather_type").plot(
-    kind="bar",
-    figsize=(10, 6)
+fig, ax = plt.subplots(figsize=(10, 6))
+
+weather_types, plot_data = prepare_plot_data(
+    weather_stats, "weather_type"
 )
 
-ax.set_xlabel("Weather type")
-ax.set_ylabel("Mean delay (minutes)")
-ax.set_title("Mean train delay by weather type (DE vs CH)")
-plt.xticks(rotation=30)
-plt.tight_layout()
+x = np.arange(len(weather_types))
+width = 0.35
 
-plt.savefig("../report/delay_per_weather_type_de_ch.png", dpi=300)
+for i, country in enumerate(["CH", "DE"]):
+    sub = plot_data[country]
+
+    means = sub["mean_delay"].values
+    yerr = [
+        means - sub["ci_lower"].values,
+        sub["ci_upper"].values - means
+    ]
+
+    if country == "CH":
+        country = ("Switzerland")
+    else:
+        country = ("Germany")
+
+    ax.bar(
+        x + i * width,
+        means,
+        width,
+        yerr=yerr,
+        capsize=4,
+        color=COUNTRY_COLORS[country],
+        label=country
+    )
+
+ax.set_xticks(x + width / 2)
+ax.set_xticklabels(weather_types, rotation=30)
+ax.set_ylabel("Mean delay (minutes)")
+ax.set_title("Mean train delay by weather type")
+ax.legend(title="Country")
+
+plt.tight_layout()
+plt.savefig("../report/analysis_results/delay_per_weather.png", dpi=300)
 plt.show()
 
 # ============================================================
-# 9 DELAY PER PERCIPITATION (PRECIPITATION BINS SIZE 5, DE vs CH)
+# 9 DELAY PER PRECIPITATION (PRECIPITATION BINS SIZE 5, DE vs CH)
 # ============================================================
 
 # Create precipitation bins of size 5 mm
@@ -405,21 +448,15 @@ df["precip_bin"] = pd.cut(
 
 weather_bin_stats = (
     df.groupby(["precip_bin", "country_x"])["delay_minutes"]
-      .mean()
-      .unstack("country_x")
-      .rename(columns={
-          "DE": "mean_delay_DE",
-          "CH": "mean_delay_CH"
-      })
-      .reset_index()
+      .apply(mean_ci)
+      .unstack()
 )
 
-print("\n=== DELAY PER PRECIPITATION BIN (DE vs CH) ===")
-print(weather_bin_stats)
+weather_bin_stats.columns = ["mean_delay", "ci_lower", "ci_upper"]
+weather_bin_stats = weather_bin_stats.reset_index()
 
-# Export CSV
 weather_bin_stats.to_csv(
-    "../report/delay_per_precipitation_bin_de_ch.csv",
+    "../report/analysis_results/delay_per_precipitation.csv",
     index=False
 )
 
@@ -427,21 +464,50 @@ weather_bin_stats.to_csv(
 # Bar chart
 # ------------------------------------------------------------
 
-ax = weather_bin_stats.set_index("precip_bin").plot(
-    kind="bar",
-    figsize=(10, 6)
-)
+fig, ax = plt.subplots(figsize=(11, 6))
 
+bins = weather_bin_stats["precip_bin"].cat.categories
+x = np.arange(len(bins))
+width = 0.35
+
+for i, country in enumerate(["CH", "DE"]):
+    sub = (
+        weather_bin_stats[weather_bin_stats["country_x"] == country]
+        .set_index("precip_bin")
+        .reindex(bins)
+    )
+
+    means = sub["mean_delay"].values
+    yerr = [
+        means - sub["ci_lower"].values,
+        sub["ci_upper"].values - means
+    ]
+
+    if country == "CH":
+        country = ("Switzerland")
+    else:
+        country = ("Germany")
+
+    ax.bar(
+        x + i * width,
+        means,
+        width,
+        yerr=yerr,
+        capsize=4,
+        color=COUNTRY_COLORS[country],
+        label=country
+    )
+
+ax.set_xticks(x + width / 2)
+ax.set_xticklabels([str(b) for b in bins], rotation=45)
 ax.set_xlabel("Precipitation (mm)")
 ax.set_ylabel("Mean delay (minutes)")
-ax.set_title("Mean train delay by precipitation (DE vs CH)")
-plt.xticks(rotation=45)
+ax.set_title("Mean train delay by precipitation")
+ax.legend(title="Country")
+
 plt.tight_layout()
-
-# Save figure
-plt.savefig("../report/delay_per_precipitation_bin_de_ch.png", dpi=300)
+plt.savefig("../report/analysis_results/delay_per_precipitation.png", dpi=300)
 plt.show()
-
 
 # ============================================================
 # 10. DELAY PER MONTH (DE vs CH)
@@ -451,40 +517,64 @@ plt.show()
 df["month_num"] = df["hour"].dt.month
 df["month_name"] = df["hour"].dt.strftime("%B")
 
-
 monthly_stats = (
     df.groupby(["month_num", "month_name", "country_x"])["delay_minutes"]
-      .mean()
-      .unstack("country_x")
-      .rename(columns={
-          "DE": "mean_delay_DE",
-          "CH": "mean_delay_CH"
-      })
-      .reset_index()
-      .sort_values("month_num")
+      .apply(mean_ci)
+      .unstack()
 )
 
+monthly_stats.columns = ["mean_delay", "ci_lower", "ci_upper"]
+monthly_stats = (
+    monthly_stats
+    .reset_index()
+    .sort_values("month_num")
+)
 
-
-print("\n=== DELAY PER MONTH (DE vs CH) ===")
-print(monthly_stats)
-
-# Export table
 monthly_stats.to_csv(
-    "../report/delay_per_month_de_ch.csv",
+    "../report/analysis_results/delay_per_month.csv",
     index=False
 )
 
 # Bar chart
-monthly_stats.set_index("month_name")[["mean_delay_CH", "mean_delay_DE"]].plot(
-    kind="bar"
+fig, ax = plt.subplots(figsize=(12, 6))
+
+months, plot_data = prepare_plot_data(
+    monthly_stats, "month_name"
 )
 
-plt.xlabel("Month")
-plt.ylabel("Mean delay (minutes)")
-plt.title("Mean delay by month (DE vs CH)")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.savefig("../report/delay_per_month_de_ch.png", dpi=300)
-plt.show()
+x = np.arange(len(months))
+width = 0.35
 
+for i, country in enumerate(["CH", "DE"]):
+    sub = plot_data[country]
+
+    means = sub["mean_delay"].values
+    yerr = [
+        means - sub["ci_lower"].values,
+        sub["ci_upper"].values - means
+    ]
+
+    if country == "CH":
+        country = ("Switzerland")
+    else:
+        country = ("Germany")
+
+    ax.bar(
+        x + i * width,
+        means,
+        width,
+        yerr=yerr,
+        capsize=4,
+        color=COUNTRY_COLORS[country],
+        label=country
+    )
+
+ax.set_xticks(x + width / 2)
+ax.set_xticklabels(months, rotation=45)
+ax.set_ylabel("Mean delay (minutes)")
+ax.set_title("Mean train delay by month")
+ax.legend(title="Country")
+
+plt.tight_layout()
+plt.savefig("../report/analysis_results/delay_per_month.png", dpi=300)
+plt.show()
