@@ -3,6 +3,7 @@ import pandas as pd
 from scipy.stats import mannwhitneyu
 import statsmodels.formula.api as smf
 import matplotlib.pyplot as plt
+import numpy as np
 import geopandas as gpd
 from pathlib import Path
 
@@ -251,11 +252,17 @@ weather_summary["weather_effect"] = (
 print("\n=== WEATHER EFFECT (MEAN DELAYS) ===")
 print(weather_summary)
 
+weather_summary.to_csv(
+    "../report/weather_effect_summary.csv"
+)
+
 # ============================================================
 # 6. STATISTICAL TESTS
 # ============================================================
 
 print("\n=== MANN–WHITNEY U TESTS ===")
+
+mw_results = []
 
 for c in ["DE", "CH"]:
     bad = df[(df.country_x == c) & (df.bad_weather == 1)]["delay_minutes"]
@@ -263,12 +270,33 @@ for c in ["DE", "CH"]:
 
     if len(bad) > 0 and len(normal) > 0:
         stat, p = mannwhitneyu(bad, normal, alternative="greater")
-        print(f"{c}: p-value = {p:.6f}")
+        mw_results.append({
+            "country": c,
+            "u_statistic": stat,
+            "p_value": p,
+            "n_bad_weather": len(bad),
+            "n_normal_weather": len(normal)
+        })
     else:
-        print(f"{c}: insufficient data")
+        mw_results.append({
+            "country": c,
+            "u_statistic": np.nan,
+            "p_value": np.nan,
+            "n_bad_weather": len(bad),
+            "n_normal_weather": len(normal)
+        })
+
+mw_df = pd.DataFrame(mw_results)
+
+print(mw_df)
+
+mw_df.to_csv(
+    "../report/mann_whitney_weather_effect.csv",
+    index=False
+)
 
 # ============================================================
-# 7. REGRESSION MODEL
+# 7. REGRESSION MODEL Note: Siwtzerland is baseline, thats why there is no country_CH in the result
 # ============================================================
 
 print("\n=== REGRESSION MODEL ===")
@@ -281,135 +309,34 @@ reg = smf.ols(
 
 print(reg.summary())
 
-'''
-# ============================================================
-# 8. REGIONAL DELAYS (CHOROPLETH DATA)
-# ============================================================
+reg_summary = pd.DataFrame({
+    "coefficient": reg.params,
+    "std_error": reg.bse,
+    "t_value": reg.tvalues,
+    "p_value": reg.pvalues
+})
 
-# ------------------------------------------------------------
-# Paths
-# ------------------------------------------------------------
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-ANALYSIS_DIR = BASE_DIR / "analysis"
-
-# Choropleth CSVs are in project root
-chor_de = pd.read_csv(BASE_DIR / "choropleth_de.csv")
-chor_ch = pd.read_csv(BASE_DIR / "choropleth_ch.csv")
-
-# Ensure consistent types for merge keys
-df_de["trainstation"] = df_de["trainstation"].astype(str)
-df_ch["trainstation"] = df_ch["trainstation"].astype(str)
-
-chor_de["trainstation"] = chor_de["trainstation"].astype(str)
-chor_ch["trainstation"] = chor_ch["trainstation"].astype(str)
-
-print("\nLoaded choropleth CSVs")
-print("DE CSV columns:", chor_de.columns.tolist())
-print("CH CSV columns:", chor_ch.columns.tolist())
-
-# ------------------------------------------------------------
-# Load shapefiles
-# ------------------------------------------------------------
-
-gdf_de = gpd.read_file(
-    ANALYSIS_DIR / "de" / "VG2500_KRS.shp"
+reg_summary.to_csv(
+    "../report/regression_results.csv"
 )
 
-gdf_ch = gpd.read_file(
-    ANALYSIS_DIR / "ch" / "swissBOUNDARIES3D_1_5_TLM_KANTONSGEBIET.shp"
-)
 
-print("\nLoaded shapefiles")
-print("DE shapefile columns:", gdf_de.columns.tolist())
-print("CH shapefile columns:", gdf_ch.columns.tolist())
+# Helper function for 95% confidence interval
 
-# ------------------------------------------------------------
-# Germany: Mean delay per Landeskreis
-# ------------------------------------------------------------
+def mean_ci(series, z=1.96):
+  mean = series.mean()
+  std = series.std()
+  n = series.count()
 
-df_de_region = df_de.merge(
-    chor_de,
-    left_on="trainstation",
-    right_on="id",
-    how="inner"
-)
+  if n == 0:
+    return pd.Series([np.nan, np.nan, np.nan])
 
-de_region_stats = (
-    df_de_region
-    .groupby("NAME")["delay_minutes"]
-    .mean()
-    .reset_index()
-    .rename(columns={
-        "NAME": "landeskreis",
-        "delay_minutes": "mean_delay"
-    })
-)
-
-print("\n=== DELAY PER LANDESKREIS (DE) ===")
-print(de_region_stats.head())
-
-# Join with shapefile (GEN = Landkreis name)
-gdf_de = gdf_de.merge(
-    de_region_stats,
-    left_on="GEN",
-    right_on="landeskreis",
-    how="left"
-)
-
-# ------------------------------------------------------------
-# Switzerland: Mean delay per Kanton
-# ------------------------------------------------------------
-
-df_ch_region = df_ch.merge(
-    chor_ch,
-    left_on="trainstation",
-    right_on="id",
-    how="inner"
-)
-
-ch_region_stats = (
-    df_ch_region
-    .groupby("NAME")["delay_minutes"]
-    .mean()
-    .reset_index()
-    .rename(columns={
-        "NAME": "kanton",
-        "delay_minutes": "mean_delay"
-    })
-)
-
-print("\n=== DELAY PER KANTON (CH) ===")
-print(ch_region_stats.head())
-
-# Join with shapefile (NAME = Kanton name)
-gdf_ch = gdf_ch.merge(
-    ch_region_stats,
-    left_on="NAME",
-    right_on="kanton",
-    how="left"
-)
-
-# ------------------------------------------------------------
-# Save aggregated data
-# ------------------------------------------------------------
-
-de_region_stats.to_csv(
-    BASE_DIR / "report" / "delay_per_landeskreis_de.csv",
-    index=False
-)
-
-ch_region_stats.to_csv(
-    BASE_DIR / "report" / "delay_per_kanton_ch.csv",
-    index=False
-)
-
-print("\n✔ Regional delay datasets prepared for choropleth mapping")
-'''
+  half_width = z * std / np.sqrt(n)
+  return pd.Series([mean, mean - half_width, mean + half_width])
 
 
 # ============================================================
-# 9. DELAY PER WEATHER (PRECIPITATION BINS, DE vs CH)
+# 8. DELAY PER WEATHER (PRECIPITATION BINS, DE vs CH)
 # ============================================================
 # Derive weather type from precipitation and temperature
 def classify_weather(row):
@@ -461,9 +388,63 @@ plt.tight_layout()
 plt.savefig("../report/delay_per_weather_type_de_ch.png", dpi=300)
 plt.show()
 
+# ============================================================
+# 9 DELAY PER PERCIPITATION (PRECIPITATION BINS SIZE 5, DE vs CH)
+# ============================================================
+
+# Create precipitation bins of size 5 mm
+max_precip = df["precipitation"].max()
+bins = list(range(0, int(max_precip // 5 * 5 + 10), 5))
+
+df["precip_bin"] = pd.cut(
+    df["precipitation"],
+    bins=bins,
+    right=False,
+    include_lowest=True
+)
+
+weather_bin_stats = (
+    df.groupby(["precip_bin", "country_x"])["delay_minutes"]
+      .mean()
+      .unstack("country_x")
+      .rename(columns={
+          "DE": "mean_delay_DE",
+          "CH": "mean_delay_CH"
+      })
+      .reset_index()
+)
+
+print("\n=== DELAY PER PRECIPITATION BIN (DE vs CH) ===")
+print(weather_bin_stats)
+
+# Export CSV
+weather_bin_stats.to_csv(
+    "../report/delay_per_precipitation_bin_de_ch.csv",
+    index=False
+)
+
+# ------------------------------------------------------------
+# Bar chart
+# ------------------------------------------------------------
+
+ax = weather_bin_stats.set_index("precip_bin").plot(
+    kind="bar",
+    figsize=(10, 6)
+)
+
+ax.set_xlabel("Precipitation (mm)")
+ax.set_ylabel("Mean delay (minutes)")
+ax.set_title("Mean train delay by precipitation (DE vs CH)")
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save figure
+plt.savefig("../report/delay_per_precipitation_bin_de_ch.png", dpi=300)
+plt.show()
+
 
 # ============================================================
-# 10. DELAY PER MONTH (DE vs CH) TODO Month is not an attribute and needs to be derived from timestamps + save bar chart
+# 10. DELAY PER MONTH (DE vs CH)
 # ============================================================
 
 # Derive month from timestamp
