@@ -2,3 +2,156 @@
 
 \section{API}
 % API call und response Beispiel fuer jeden Endpunkt
+For the API, FastAPI was used to implement a REST interface for accessing the precipitation data stored in the german\_prec table.
+The API provides basic reading (GET), adding (POST), modifying (PUT) and deleting
+(DELETE) functionality.
+The service connects directly to the database using psycopg2.
+
+The API can be started locally using:
+\begin{verbatim}
+python -m uvicorn main:app --reload
+\end{verbatim}
+
+Alternatively, it can be started via the provided \texttt{run\_fastapi.bat} file.
+\par\vspace{0.5em}
+After startup, the interactive API documentation is available at:
+\begin{verbatim}
+http://127.0.0.1:8000/docs
+\end{verbatim}
+
+\subsection{Data Model}
+
+All requests that insert or update data use the same JSON structure, defined using a Pydantic model.
+Each record is uniquely identified by a composite primary key consisting of the \underline{station\_id} and the \underline{station\_timestamp}.
+All remaining attributes are optional.
+\par\vspace{0.5em}
+\textbf{Example JSON object:}
+\begin{verbatim}
+{
+  "station_id": 164,
+  "station_timestamp": "2024-09-01T00:00:00",
+  "qn_8": 3,
+  "precipitation_mm": 0,
+  "precipitation_t_or_f": false,
+  "precipitation_type": 0,
+  "eor": "eor"
+}
+\end{verbatim}
+
+\subsection{GET: Read Precipitation Data}
+
+\textbf{Endpoint:}
+\begin{verbatim}
+GET /precipitation/{station_id}
+\end{verbatim}
+
+This endpoint returns up to 100 precipitation records for a given weather station.
+The limit is applied to prevent excessive data transfer and ensure acceptable response times.
+\par\vspace{0.5em}
+\textbf{Example request:}
+\begin{verbatim}
+GET /precipitation/164
+\end{verbatim}
+
+\textbf{Example response:}
+\begin{verbatim}
+[
+  {
+    "station_id": 164,
+    "station_timestamp": "2024-09-01T00:00:00",
+    "qn_8": 3,
+    "precipitation_mm": 0,
+    "precipitation_t_or_f": false,
+    "precipitation_type": 0,
+    "eor": "eor"
+  }
+]
+\end{verbatim}
+
+\subsection{POST: Insert New Data}
+
+\textbf{Endpoint:}
+\begin{verbatim}
+POST /precipitation
+\end{verbatim}
+
+This endpoint inserts a new precipitation record into the database.
+\par\vspace{0.5em}
+
+\textbf{Example request body:}
+\begin{verbatim}
+{
+  "station_id": 1,
+  "station_timestamp": "2024-09-01T00:00:00",
+  "qn_8": 3,
+  "precipitation_mm": 0,
+  "precipitation_t_or_f": false,
+  "precipitation_type": 0,
+  "eor": "eor"
+}
+\end{verbatim}
+
+\textbf{Example response:}
+\begin{verbatim}
+{
+  "message": "new tuple created"
+}
+\end{verbatim}
+
+\subsection{PUT: Update Existing Data}
+
+\textbf{Endpoint:}
+\begin{verbatim}
+PUT /precipitation/{station_id}/{station_timestamp}
+\end{verbatim}
+
+This endpoint updates an existing precipitation record identified by station ID and timestamp.
+The primary key itself cannot be modified.
+\par\vspace{0.5em}
+
+\textbf{Example request:}
+\begin{verbatim}
+PUT /precipitation/1/2024-09-01T00:00:00
+\end{verbatim}
+
+\textbf{Example request body:}
+\begin{verbatim}
+{
+  "station_id": 1,
+  "station_timestamp": "2024-09-01T00:00:00",
+  "qn_8": 3,
+  "precipitation_mm": 5,
+  "precipitation_t_or_f": true,
+  "precipitation_type": 1,
+  "eor": "eor"
+}
+\end{verbatim}
+
+\textbf{Example response:}
+\begin{verbatim}
+{
+  "message": "updated"
+}
+\end{verbatim}
+
+\subsection{DELETE: Remove Data}
+
+\textbf{Endpoint:}
+\begin{verbatim}
+DELETE /precipitation/{station_id}/{station_timestamp}
+\end{verbatim}
+
+This endpoint deletes a precipitation record using station ID and timestamp as identifiers.
+In the following example, the artificially created entry from the POST example is removed.
+\par\vspace{0.5em}
+\textbf{Example request:}
+\begin{verbatim}
+DELETE /precipitation/1/2024-09-01T00:00:00
+\end{verbatim}
+
+\textbf{Example response:}
+\begin{verbatim}
+{
+  "message": "deleted"
+}
+\end{verbatim}
