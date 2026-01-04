@@ -409,11 +409,25 @@ print("\n✔ Regional delay datasets prepared for choropleth mapping")
 
 
 # ============================================================
-# 9. DELAY PER WEATHER (DE vs CH) TODO Change percipitation to actual weather for future + save bar chart
+# 9. DELAY PER WEATHER (PRECIPITATION BINS, DE vs CH)
 # ============================================================
+# Derive weather type from precipitation and temperature
+def classify_weather(row):
+    if row["precipitation"] > 0 and row["temperature"] <= 0:
+        return "Snow"
+    elif row["precipitation"] >= 10:
+        return "Heavy rain"
+    elif row["precipitation"] >= 5:
+        return "Rain"
+    elif row["precipitation"] > 0:
+        return "Light rain"
+    else:
+        return "Dry"
 
-weather_type_stats = (
-    df.groupby(["precipitation", "country_x"])["delay_minutes"]
+df["weather_type"] = df.apply(classify_weather, axis=1)
+
+weather_stats = (
+    df.groupby(["weather_type", "country_x"])["delay_minutes"]
       .mean()
       .unstack("country_x")
       .rename(columns={
@@ -423,34 +437,42 @@ weather_type_stats = (
       .reset_index()
 )
 
-print("\n=== DELAY PER WEATHER (DE vs CH) ===")
-print(weather_type_stats)
+print("\n=== DELAY PER WEATHER TYPE (DE vs CH) ===")
+print(weather_stats)
 
-weather_type_stats.to_csv(
+# Export table
+weather_stats.to_csv(
     "../report/delay_per_weather_type_de_ch.csv",
     index=False
 )
 
-
-# Bar Chart
-
-weather_type_stats.set_index("precipitation").plot(
-    kind="bar"
+# Bar chart
+ax = weather_stats.set_index("weather_type").plot(
+    kind="bar",
+    figsize=(10, 6)
 )
 
-plt.ylabel("Mean delay (minutes)")
-plt.title("Mean delay by weather (DE vs CH)")
+ax.set_xlabel("Weather type")
+ax.set_ylabel("Mean delay (minutes)")
+ax.set_title("Mean train delay by weather type (DE vs CH)")
 plt.xticks(rotation=30)
 plt.tight_layout()
+
+plt.savefig("../report/delay_per_weather_type_de_ch.png", dpi=300)
 plt.show()
 
-'''
+
 # ============================================================
 # 10. DELAY PER MONTH (DE vs CH) TODO Month is not an attribute and needs to be derived from timestamps + save bar chart
 # ============================================================
 
+# Derive month from timestamp
+df["month_num"] = df["hour"].dt.month
+df["month_name"] = df["hour"].dt.strftime("%B")
+
+
 monthly_stats = (
-    df.groupby(["month", "country_x"])["delay_minutes"]
+    df.groupby(["month_num", "month_name", "country_x"])["delay_minutes"]
       .mean()
       .unstack("country_x")
       .rename(columns={
@@ -458,28 +480,30 @@ monthly_stats = (
           "CH": "mean_delay_CH"
       })
       .reset_index()
-      .sort_values("month")
+      .sort_values("month_num")
 )
+
+
 
 print("\n=== DELAY PER MONTH (DE vs CH) ===")
 print(monthly_stats)
 
+# Export table
 monthly_stats.to_csv(
     "../report/delay_per_month_de_ch.csv",
     index=False
 )
 
-
-# Bar Chart
-
-monthly_stats.set_index("month").plot(
+# Bar chart
+monthly_stats.set_index("month_name")[["mean_delay_CH", "mean_delay_DE"]].plot(
     kind="bar"
 )
 
 plt.xlabel("Month")
 plt.ylabel("Mean delay (minutes)")
 plt.title("Mean delay by month (DE vs CH)")
-plt.xticks(range(0, 12), range(1, 13))
+plt.xticks(rotation=45)
 plt.tight_layout()
+plt.savefig("../report/delay_per_month_de_ch.png", dpi=300)
 plt.show()
-'''
+
