@@ -37,11 +37,11 @@ WHERE delay_in_min IS NOT NULL
 sql_train_ch = """
 SELECT
     bpuic AS trainstation,
-    arrival_time AS timestamp,
-    predicted_arrival
+    predicted_arrival AS timestamp,
+    arrival_time
 FROM swiss_trainstop
-WHERE predicted_arrival IS NOT NULL
-  AND arrival_time IS NOT NULL
+WHERE predicted_departure IS NOT NULL
+  AND departure_time IS NOT NULL
   AND cancellation_flag = false
   AND pass_through_flag = false;
 """
@@ -91,12 +91,17 @@ print("✔ Data loaded")
 
 # Swiss delay calculation
 df_train_ch["delay_minutes"] = (
-    (df_train_ch["predicted_arrival"] - df_train_ch["timestamp"])
+    (df_train_ch["timestamp"] - df_train_ch["arrival_time"])
     .dt.total_seconds() / 60
 )
 
+df_train_ch.loc[df_train_ch["delay_minutes"] < -1000, "delay_minutes"] += 1440
+df_train_ch["delay_minutes"] = df_train_ch["delay_minutes"].clip(lower=0)
+df_train_ch = df_train_ch[df_train_ch["delay_minutes"] <= 1000]
+
 # Standardize train data
 df_train_de["delay_minutes"] = df_train_de["delay_in_min"]
+df_train_de["delay_minutes"] = df_train_de["delay_minutes"].clip(lower=0)
 df_train_de["country"] = "DE"
 df_train_ch["country"] = "CH"
 
@@ -352,7 +357,9 @@ COLOR_DE = "#ff7f0e"  # orange
 
 COUNTRY_COLORS = {
     "Germany": COLOR_DE,
-    "Switzerland": COLOR_CH
+    "DE": COLOR_DE,
+    "Switzerland": COLOR_CH,
+    "CH": COLOR_CH
 }
 
 # ============================================================
@@ -515,7 +522,7 @@ plt.show()
 
 # Derive month from timestamp
 df["month_num"] = df["hour"].dt.month
-df["month_name"] = df["hour"].dt.strftime("%B")
+df["month_name"] = df["hour"].dt.month_name()
 
 monthly_stats = (
     df.groupby(["month_num", "month_name", "country_x"])["delay_minutes"]
@@ -524,11 +531,18 @@ monthly_stats = (
 )
 
 monthly_stats.columns = ["mean_delay", "ci_lower", "ci_upper"]
+monthly_stats = monthly_stats.reset_index()
+
+MONTH_ORDER = [9, 10, 11, 12, 1, 2, 3 ,4]
+MONTH_NAME_MAP= {1: "January", 2: "February", 3: "March",
+                 4: "April", 9: "September",
+                 10: "October", 11: "November", 12: "December"}
+
 monthly_stats = (
-    monthly_stats
-    .reset_index()
-    .sort_values("month_num")
+    monthly_stats.set_index("month_num").loc[MONTH_ORDER].reset_index()
 )
+
+monthly_stats["month_name"] = monthly_stats["month_name"].map(MONTH_NAME_MAP)
 
 monthly_stats.to_csv(
     "../report/analysis_results/delay_per_month.csv",
@@ -538,26 +552,21 @@ monthly_stats.to_csv(
 # Bar chart
 fig, ax = plt.subplots(figsize=(12, 6))
 
-months, plot_data = prepare_plot_data(
-    monthly_stats, "month_name"
-)
-
-x = np.arange(len(months))
+x = np.arange(len(MONTH_ORDER))
 width = 0.35
 
 for i, country in enumerate(["CH", "DE"]):
-    sub = plot_data[country]
+    sub = (
+        monthly_stats[monthly_stats["country_x"] == country]
+        .set_index("month_num")
+        .reindex(MONTH_ORDER)
+    )
 
     means = sub["mean_delay"].values
     yerr = [
         means - sub["ci_lower"].values,
         sub["ci_upper"].values - means
     ]
-
-    if country == "CH":
-        country = ("Switzerland")
-    else:
-        country = ("Germany")
 
     ax.bar(
         x + i * width,
@@ -566,11 +575,11 @@ for i, country in enumerate(["CH", "DE"]):
         yerr=yerr,
         capsize=4,
         color=COUNTRY_COLORS[country],
-        label=country
+        label="Switzerland" if country == "CH" else "Germany"
     )
 
 ax.set_xticks(x + width / 2)
-ax.set_xticklabels(months, rotation=45)
+ax.set_xticklabels([MONTH_NAME_MAP[m] for m in MONTH_ORDER], rotation=45)
 ax.set_ylabel("Mean delay (minutes)")
 ax.set_title("Mean train delay by month")
 ax.legend(title="Country")
