@@ -131,7 +131,7 @@ if __name__ == "__main__":
     failed_ch = augment_train(df_train_ch)
 
     df_train_de = df_train_de.dropna(subset=["trainstation_in_ch"])
-    df_train_de = df_train_ch.dropna(subset=["trainstation_in_ch"])
+    df_train_ch = df_train_ch.dropna(subset=["trainstation_in_ch"])
 
     with open("failed_train_de.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
