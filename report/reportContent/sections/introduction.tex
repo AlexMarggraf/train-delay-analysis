@@ -16,13 +16,7 @@ in finding, cleaning, and integrating
 real-world, messy data
 into one coherent database.\\\\
 The datasets we selected consisted of train and weather data
-from Switzerland and Germany, which are listed below.
-\begin{itemize}
-    \item German train data: \url{https://github.com/piebro/deutsche-bahn-data}
-    \item German weather data: \url{https://opendata.dwd.de/}
-    \item Swiss train data: \url{https://archive.opentransportdata.swiss/actual_data_archive.htm} (not public, was obtained for project)
-    \item Swiss weather data: \url{https://opendatadocs.meteoswiss.ch/de/general/download}
-\end{itemize}
+from Switzerland and Germany, which we obtained from the internet. \cite{piebro_deutsche-bahn-data}\cite{dwd_opendata}\cite{meteoswiss_opendata}\cite{opentransportdata_switzerland_archive}
 The German train data was provided by Deutsche Bahn
 and consists of a collection of \texttt{.parquet} files
 which list all recorded train stops
@@ -32,12 +26,12 @@ such that there is one file per month,
 which records, among other things,
 where and when each train stopped
 and whether it was delayed or canceled.
-An ER diagram can be seen in Figure~\ref{fig:german_train_er}.\\\\
+An ER diagram can be seen in \Cref{fig:g5_german_train_er}.\\\\
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.9\textwidth]{german_train.pdf}
+\includegraphics[width=0.9\textwidth]{g5_german_train.pdf}
 \caption{ER Diagram of the german train dataset}
-\label{fig:german_train_er}
+\label{fig:g5_german_train_er}
 \end{figure}
 The German weather data was provided by the Deutsche Wetterdienst
 and consists of a complex collection of text files
@@ -52,12 +46,12 @@ and the station at which it was recorded.
 Additionally, the Deutsche Wetterdienst provided metadata
 for the weather stations,
 which offers insight into their individual locations.
-An ER diagram can be seen in Figure~\ref{fig:german_weather_er}.\\\\
+An ER diagram can be seen in \Cref{fig:g5_german_weather_er}.\\\\
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.9\textwidth]{german_weather.pdf}
+\includegraphics[width=0.9\textwidth]{g5_german_weather.pdf}
 \caption{ER Diagram of the german weather dataset}
-\label{fig:german_weather_er}
+\label{fig:g5_german_weather_er}
 \end{figure}
 The Swiss train data was provided by SBB
 and consists of a collection of large CSV files
@@ -67,12 +61,12 @@ This includes, among other information,
 the locations at which trains stopped,
 their exact arrival and departure times,
 and whether the trains were canceled.
-An ER diagram can be seen in Figure~\ref{fig:swiss_train_er}.\\\\
+An ER diagram can be seen in \Cref{fig:g5_swiss_train_er}.\\\\
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.9\textwidth]{swiss_train.pdf}
+\includegraphics[width=0.9\textwidth]{g5_swiss_train.pdf}
 \caption{ER Diagram of the swiss train dataset}
-\label{fig:swiss_train_er}
+\label{fig:g5_swiss_train_er}
 \end{figure}
 The Swiss weather data was provided by MeteoSchweiz
 and consists of a collection of large CSV files
@@ -84,12 +78,12 @@ Additionally, we obtained a list of all Swiss weather stations
 recorded by MeteoSchweiz,
 which can be found here: \\
 \url{https://data.geo.admin.ch/ch.meteoschweiz.ogd-smn/ogd-smn_meta_stations.csv}.
-An ER diagram can be seen in Figure~\ref{fig:swiss_weather_er}.\\\\
+An ER diagram can be seen in \Cref{fig:g5_swiss_weather_er}.\\\\
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.9\textwidth]{swiss_weather.pdf}
+\includegraphics[width=0.9\textwidth]{g5_swiss_weather.pdf}
 \caption{ER Diagram of the swiss weather dataset}
-\label{fig:swiss_weather_er}
+\label{fig:g5_swiss_weather_er}
 \end{figure}
 Our goal was to determine the delays and cancellation rates of trains in both countries.
 To achieve this, we considered only data ranging from

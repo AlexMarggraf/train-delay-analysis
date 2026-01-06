@@ -60,7 +60,7 @@ and also indicates whether the train station or weather station
 is located in Switzerland or Germany.
 This is useful for the final analysis.
 The full ER diagram of the integrated schema
-can be found in Figure~\ref{fig:integrated_er},
+can be found in \Cref{fig:g5_integrated_er},
 and the logical schema is listed below.
 Note that the table \texttt{trainstation\_weatherstation}
 does not reference the actual tables
@@ -94,9 +94,9 @@ evapotranspiration, soil\_temp\_5cm\_mean, soil\_temp\_10cm\_mean, soil\_temp\_2
 \textbf{trainstation\_weatherstation}(\underline{trainstation}, trainstation\_in\_ch, weatherstation, weatherstation\_in\_ch)\\\\
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\textwidth]{integrated.pdf}
+\includegraphics[width=0.95\textwidth]{g5_integrated.pdf}
 \caption{ER Diagram of the final database}
-\label{fig:integrated_er}
+\label{fig:g5_integrated_er}
 \end{figure}
 To integrate the schema, we used the same approach for each dataset.
 This included loading one source file into a pandas DataFrame,
