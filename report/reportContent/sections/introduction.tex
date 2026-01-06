@@ -2,3 +2,101 @@
 
 \section{Introduction}
 % Problemstellung, Analyse Ziel, Datensaetze und ER Diagramme der einzelnen Datensaetze
+
+The goal of our project was to identify interesting datasets,
+create a consistent schema that includes all data sources,
+clean and integrate the data into a single database,
+and analyze the data to gain meaningful insights.
+Throughout this process,
+we aimed not only to uncover interesting facts
+about our chosen datasets
+and the real-world circumstances they model,
+but also to develop knowledge and skills
+in finding, cleaning, and integrating
+real-world, messy data
+into one coherent database.\\\\
+The datasets we selected consisted of train and weather data
+from Switzerland and Germany, which are listed below.
+\begin{itemize}
+    \item German train data: \url{https://github.com/piebro/deutsche-bahn-data}
+    \item German weather data: \url{https://opendata.dwd.de/}
+    \item Swiss train data: \url{https://archive.opentransportdata.swiss/actual_data_archive.htm} (not public, was obtained for project)
+    \item Swiss weather data: \url{https://opendatadocs.meteoswiss.ch/de/general/download}
+\end{itemize}
+The German train data was provided by Deutsche Bahn
+and consists of a collection of \texttt{.parquet} files
+which list all recorded train stops
+of trains operated by Deutsche Bahn in Germany.
+The collection was already processed
+such that there is one file per month,
+which records, among other things,
+where and when each train stopped
+and whether it was delayed or canceled.
+An ER diagram can be seen in Figure~\ref{fig:german_train_er}.\\\\
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.9\textwidth]{german_train.pdf}
+\caption{ER Diagram of the german train dataset}
+\label{fig:german_train_er}
+\end{figure}
+The German weather data was provided by the Deutsche Wetterdienst
+and consists of a complex collection of text files
+which are structured similarly to CSV files.
+These files are separated by measurement type,
+including temperature, precipitation, pressure, and wind,
+as well as by historical data up to 2025
+and recent data.
+The files themselves contain the corresponding measurements,
+the time at which each measurement was taken,
+and the station at which it was recorded.
+Additionally, the Deutsche Wetterdienst provided metadata
+for the weather stations,
+which offers insight into their individual locations.
+An ER diagram can be seen in Figure~\ref{fig:german_weather_er}.\\\\
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.9\textwidth]{german_weather.pdf}
+\caption{ER Diagram of the german weather dataset}
+\label{fig:german_weather_er}
+\end{figure}
+The Swiss train data was provided by SBB
+and consists of a collection of large CSV files
+which list all recorded train stops
+of trains operated by SBB on a monthly basis.
+This includes, among other information,
+the locations at which trains stopped,
+their exact arrival and departure times,
+and whether the trains were canceled.
+An ER diagram can be seen in Figure~\ref{fig:swiss_train_er}.\\\\
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.9\textwidth]{swiss_train.pdf}
+\caption{ER Diagram of the swiss train dataset}
+\label{fig:swiss_train_er}
+\end{figure}
+The Swiss weather data was provided by MeteoSchweiz
+and consists of a collection of large CSV files
+which list all measured meteorological variables,
+such as temperature or precipitation,
+when these measurements were taken,
+and which station recorded them.
+Additionally, we obtained a list of all Swiss weather stations
+recorded by MeteoSchweiz,
+which can be found here: \\
+\url{https://data.geo.admin.ch/ch.meteoschweiz.ogd-smn/ogd-smn_meta_stations.csv}.
+An ER diagram can be seen in Figure~\ref{fig:swiss_weather_er}.\\\\
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.9\textwidth]{swiss_weather.pdf}
+\caption{ER Diagram of the swiss weather dataset}
+\label{fig:swiss_weather_er}
+\end{figure}
+Our goal was to determine the delays and cancellation rates of trains in both countries.
+To achieve this, we considered only data ranging from
+the beginning of September 2024 to the end of August 2025.
+Furthermore, we divided the data into two groups, one for each country,
+and analyzed delays per year, per month, per weather condition,
+and per canton or municipality.
+Additionally, we calculated the percentage of train cancellations
+per canton or municipality
+and identified which locations experience higher traffic on average.
