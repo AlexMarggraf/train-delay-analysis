@@ -63,7 +63,7 @@ With these approaches, we were able to get a clean and readable analysis with re
 In this section, we now take a closer look at the final results of our analysis of the average delay for each country, Cantons and Counties
 and how much the weather effected the average delay in Switzerland and Germany.
 
-\subsubsection*{Delay per Country and the effect of the weather}\phantom{}\\\\
+\subsubsection*{Delay per Country and the effect of the weather}\phantom{}\\
 The first thing we chacked is the delay per county in order to get a solid baseline and to check if the data is reasonable.
 Here we calculated the average delay in minutes, the median delay, the standard deviation of delays and the actual count of train stops.
 \Cref{fig:g5_country_delay} shows our results, we rounded to the second decimal place and the delay is calculated in minutes.
@@ -169,17 +169,17 @@ We created the regression model based on the formula, and we got the results for
 The coefficient shows how much each variable increases the average delay if the variable increases.
 This means that the biggest impact on the delay has the precipitation and that the temperature and the wind speed have minimal effects on the actual delay.
 
-\subsubsection*{Average delay and cancellations per Canton and County with respect to total train stops}\phantom{}\\\\
+\subsubsection*{Average delay and cancellations per Canton and County with respect to total train stops}\phantom{}\\
 We were also interested in the average delay in each Canton and County. This is shown in \Cref{fig:g5_map_delay_ch} and \Cref{fig:g5_map_delay_de}.
 \begin{figure}[!ht]
     \centering
-        %\includegraphics{}
+    \includegraphics[width=0.9\textwidth]{g5_avg_delay_ch.png}
     \caption{Average delay per Canton}
     \label{fig:g5_map_delay_ch}
 \end{figure}
 \begin{figure}[!ht]
     \centering
-        %\includegraphics{}
+    \includegraphics[width=0.7\textwidth]{g5_avg_delay_de.png}
     \caption{Average delay per County}
     \label{fig:g5_map_delay_de}
 \end{figure}
@@ -193,13 +193,13 @@ Even with considering this, the average delays in the counties are much larger t
 We also take a look at the cancellations per canton and counties. The results are shown in \Cref{fig:g5_map_cancellation_ch} and \Cref{fig:g5_map_cancellation_de}.
 \begin{figure}[!ht]
     \centering
-        %\includegraphics{}
+    \includegraphics[width=0.9\textwidth]{g5_avg_canceled_ch.png}
     \caption{Cancellations per Canton}
     \label{fig:g5_map_cancellation_ch}
 \end{figure}
 \begin{figure}[!ht]
     \centering
-       %\includegraphics{}
+       \includegraphics[width=0.7\textwidth]{g5_avg_canceled_de.png}
     \caption{Cancellations per County}
     \label{fig:g5_map_cancellation_de}
 \end{figure}
@@ -211,13 +211,14 @@ This could lead to the assumption that German trains have an impact on the relia
 We also considered looking at total train stops per canton and county in \Cref{fig:g5_map_tot_stops_ch} and \Cref{fig:g5_map_tot_stops_de} to find regions with a very small count of trains and to see a how reliable the other graphs are for the cantons and counties.
 \begin{figure}[!ht]
     \centering
-        %\includegraphics{}
+        \includegraphics[width=0.9\textwidth]{g5_tot_stops_ch.png}
     \caption{Total stops per Canton}
     \label{fig:g5_map_tot_stops_ch}
+    % \vspace{-30pt}
 \end{figure}
 \begin{figure}[!ht]
     \centering
-        %\includegraphics{}
+        \includegraphics[width=0.7\textwidth]{g5_tot_stops_de.png}
     \caption{Total stops per County}
     \label{fig:g5_map_tot_stops_de}
 \end{figure}
@@ -225,12 +226,12 @@ Looking at this total train stops, we can see that most of the data is pretty re
 We can also see that the total amount of stops in Switzerland is larger than in Germany, this means that the Swiss data is muh more accurate than Germany.
 Since Germany might be missing a lot of counties with very punctual trains, which would decrease the average delay or very delayed regions which would increase the average delay.
 
-\subsubsection*{Delay per Weather}\phantom{}\\\\
+\subsubsection*{Delay per Weather}\phantom{}\\
 We also checked the average delay for each weather for Switzerland and Germany.
 The results of this are shown in \Cref{fig:g5_delay_weather}.
 \begin{figure}[!ht]
     \centering
-        %\includegraphics{}
+        \includegraphics[width=0.9\textwidth]{g5_delay_per_weather.png}
     \caption{Average delay per weather}
     \label{fig:g5_delay_weather}
 \end{figure}
@@ -240,12 +241,12 @@ In germany, the trains also almost always have the same average delay but for ge
 As expected, the trains have the smallest average delay for good and dry weather.
 An interesting fact is that the smallest average delay for German trains is still almost twice as large as the average delay for snowy weather in Switzerland.
 
-\subsubsection*{Delay per Precipitation}\phantom{}\\\\
+\subsubsection*{Delay per Precipitation}\phantom{}\\
 After taking a look on the weather based on precipitation, we also wanted take a look on finer precipitation steps to get a more detailed look on the effect of the precipitation.
 \Cref{fig:g5_delay_prec} shows the results for this analysis.
 \begin{figure}[!ht]
     \centering
-        %\includegraphics{}
+        \includegraphics[width=0.9\textwidth]{g5_delay_per_precipitation.png}
     \caption{Average delay per precipitation}
     \label{fig:g5_delay_prec}
 \end{figure}
@@ -257,12 +258,12 @@ For Germany, we can see a much bigger impact of the precipitation on the average
 This could show that the German train net is much more effected by precipitation than the Swiss tain net.
 This also leads to the assumption, that the Swiss train net is way more robust than the German train net.
 
-\subsubsection*{Delay per Month}\phantom{}\\\\
+\subsubsection*{Delay per Month}\phantom{}\\
 Our final analysis is how the average delay changes over the months.
 We expected to see a higher average delay in the colder winter months than in the warmer summer months with better weather.
  \begin{figure}[!ht]
     \centering
-        %\includegraphics{}
+        \includegraphics[width=0.9\textwidth]{g5_delay_per_month.png}
     \caption{Average delay per month}
     \label{fig:g5_delay_month}
 \end{figure}
@@ -289,5 +290,3 @@ For these outliers and the trains which arrived earlier than expected, we change
 Here we might have had wrong assumptions, and we might have had an influence on the actual data and we might have missed some outliers,
 which are still in the results. \newline \newline
 In the end, we can still say that our conclusions and results are pretty meaningful and are close to reality based on our individual experiences with the two train nets.
-
-\pagebreak
