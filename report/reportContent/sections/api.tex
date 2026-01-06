@@ -2,7 +2,7 @@
 
 \section{API}
 % API call und response Beispiel fuer jeden Endpunkt
-For the API, FastAPI was used to implement a REST interface for accessing the precipitation data stored in the german\_prec table.
+For the API, FastAPI\cite{fastAPI_documentation} was used to implement a REST interface for accessing the precipitation data stored in the german\_prec table.
 The API provides basic reading (GET), adding (POST), modifying (PUT) and deleting
 (DELETE) functionality.
 The service connects directly to the database using psycopg2.
@@ -155,3 +155,4 @@ DELETE /precipitation/1/2024-09-01T00:00:00
   "message": "deleted"
 }
 \end{verbatim}
+\cite{chatgpt_spellcheck}

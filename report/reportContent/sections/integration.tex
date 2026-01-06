@@ -1,28 +1,198 @@
 \setlength{\parindent}{0pt}
 
 \section{Integration}
-% Schema und Daten Integrationschritte,
-% ER Diagramm und Logisches Schema der integrierten Datenbank
-% und alle cleaning/normalization Schritte
 
-% - ch-train one big dataset -> trainstation with bpuic pk, trainstop with generated pk, trainline with line_id, trip_identifier, operating_day pk
-% - ch-weather two datasets -> weatherstation with station_abbr pk, measurement with station_abbr, timestamp pk
-% - de-train one big dataset -> trainstation with eva pk, trainstop with stop_id pk, trainline with trainline_ride_id, final_destination_station, train_name pk
-% - de_weather many files -> weatherstation with station_id pk, 4 measurement with station_id, timestamp pk
-% - lookup tabel from trainstation to weatherstation
-
-% - ch-train Load csv, filter for trains, filter for required columns, load last stop id,
-%   augment trainstation data csv, augment operator csv, formate date for line and store in csv,
-%   generate id for trainstop format date and store in csv, store last stop id, final dedublication
-% - ch-weather load csv, format time, filter for correct timespan, filter for required columns,
-%   store in csv
-% - de-train convert parquet to csv, load csv , filter for required column, augment trainstation csv,
-%   augment trainline csv, store trainstop in csv, final dedublication
-% - de-weather load data, remove whitespaces, filter for correct timespan,
-%   filter for required columns, set impossible datapoints to nan, format date, store in csv,
-%   prec cast wrtr from float to int, cast rs_ind from int to boolean, wind cast d from float to int,
-%   load station metadata file, remove whitespaces, keep only last recorded station,
-%   filter for last recorded date, format date, filter for required columns, augment weatherstation csv,
-%   final deduplication,
-
-% - use copy to integrate data into database
+To integrate the data, we first dissected all four datasets and created corresponding ER diagrams.
+Following that, we attempted to create one large coherent schema which includes all data,
+but we ended up mostly leaving the datasets unconnected.\\\\
+For the German train data, we had one \texttt{.parquet} file \cite{apache_parquet} for every month,
+which we turned into three tables.
+The \texttt{german\_trainstation} table holds mostly just the station name
+but is important for classifying train events later.
+The \texttt{german\_trainstop} table holds all information about train events,
+such as arrival and departure time, where the stop occurred,
+the delay in minutes, and information about cancellations.
+The \texttt{german\_trainline} table holds information about the line
+under which the train operated, as well as the trains name, type, and its final destination.\\\\
+The German weather data consisted of many files which were separated by
+type of measurement and whether the data was historic or recent.
+For each measurement, we created a table called
+\texttt{german\_<measurement\_name>} which holds the value of the measurement,
+additional information, the time the measurement was taken,
+and the weather station at which it was recorded.
+The \texttt{german\_weatherstation} table holds information about the station name
+as well as its latitude and longitude.\\\\
+For the Swiss train dataset, we had one set of large CSV files
+which we turned into four tables.
+The \texttt{swiss\_trainstation} table holds mostly just the station name
+but is important for classifying train events later.
+The \texttt{swiss\_trainstop} table holds information about all train stops that occurred,
+including arrival and departure time, location,
+and information about cancellations.
+The \texttt{swiss\_trainline} table holds information about the train line
+which operated the train.
+It contains information about the train being used and the line name.
+It is important to note that we misinterpreted the dataset in this regard.
+Instead of just storing line information,
+we assumed lines differ from day to day,
+which resulted in a very convoluted primary key consisting of the line ID,
+a trip identifier, and the operating day.
+The \texttt{swiss\_operator} table holds information about the company,
+such as SBB or \"OBB,
+under which a train completed its journey.\\\\
+For the Swiss weather data, we had one set of CSV files
+which we implemented largely without modification
+as the table \texttt{swiss\_measurement}.
+This table contains information about meteorological measurements,
+the date of the measurement,
+and which station recorded the measurement.
+Additionally, we created a table based on a CSV file
+of all Swiss weather stations called \texttt{swiss\_weatherstations}.
+This table contains extensive data on the different weather stations,
+but we only use the latitude and longitude for each station.\\\\
+The integrated schema, which holds all the data,
+contains all the aforementioned tables
+as well as one additional table called
+\texttt{trainstation\_weatherstation}.
+This table holds information about which weather station
+is closest to each train station
+and also indicates whether the train station or weather station
+is located in Switzerland or Germany.
+This is useful for the final analysis.
+The full ER diagram of the integrated schema
+can be found in \Cref{fig:g5_integrated_er},
+and the logical schema is listed below.
+Note that the table \texttt{trainstation\_weatherstation}
+does not reference the actual tables
+and merely acts as a lookup table.\\\\
+\textbf{swiss\_weatherstation}(\underline{station\_abbr}, station\_name, station\_canton, station\_wigos\_id, 
+station\_type\_de, station\_type\_fr, station\_type\_it, station\_type\_en, 
+station\_data\_owner, station\_data\_since, station\_height\_masl, station\_height\_barometer\_masl, 
+station\_lv95\_east, station\_lv95\_north, station\_latitude, station\_longitude, 
+station\_exposure\_de, station\_exposure\_fr, station\_exposure\_it, station\_exposure\_en, 
+station\_url\_de, station\_url\_fr, station\_url\_it, station\_url\_en)\\\\
+\textbf{swiss\_measurement}(\underline{\uwave{station\_abbr}, station\_timestamp}, 
+temp\_2m\_mean, temp\_2m\_min, temp\_2m\_max, temp\_0\_5m\_mean, temp\_0\_5m\_min,
+humidity\_2m, vapor\_pressure\_2m, dewpoint\_2m, pressure\_station, pressure\_qff, pressure\_qnh,
+geopotential\_700hpa, geopotential\_850hpa, wind\_speed\_10m\_mean, wind\_direction\_10m,
+wind\_speed\_10m\_instant, gust\_10m, gust\_10m\_max, wind\_speed\_10m\_3min, gust\_10m\_3min,
+cloud\_cover, sunshine\_duration, precipitation, global\_radiation, snow\_height,
+soil\_temp\_0cm, soil\_temp\_5cm, soil\_temp\_10cm, soil\_temp\_20cm, snow\_water\_equivalent,
+evapotranspiration, soil\_temp\_5cm\_mean, soil\_temp\_10cm\_mean, soil\_temp\_20cm\_mean)\\\\
+\textbf{german\_weatherstation}(\underline{station\_id}, station\_height, station\_latitude, station\_longitude, station\_from, station\_until, station\_name)\\\\
+\textbf{german\_temp}(\underline{\uwave{station\_id}, station\_timestamp}, qn\_9, temperature\_c, humidity\_rel, eor)\\\\
+\textbf{german\_prec}(\underline{\uwave{station\_id}, station\_timestamp}, qn\_8, precipitation\_mm, precipitation\_T\_or\_F, precipitation\_type, eor)\\\\
+\textbf{german\_pres}(\underline{\uwave{station\_id}, station\_timestamp}, qn\_8, pressure\_calculated\_oceanlevel, pressure, eor)\\\\
+\textbf{german\_wind}(\underline{\uwave{station\_id}, station\_timestamp}, qn\_3, wind\_speed, wind\_direction\_deg, eor)\\\\
+\textbf{swiss\_trainstation}(\underline{bpuic}, station\_name)\\\\
+\textbf{swiss\_operator}(\underline{operator\_id}, operator\_abbreviation, operator\_name)\\\\
+\textbf{swiss\_trainline}(\underline{line\_id, trip\_identifier, operating\_day}, \uwave{operator\_id}, line\_text, vehicle\_text, product\_id, circulation\_id)\\\\
+\textbf{swiss\_trainstop}(\underline{stop\_id}, \uwave{bpuic}, \uwave{line\_id, trip\_identifier, operating\_day}, arrival\_time, departure\_time, predicted\_arrival, predicted\_departure, arrival\_prediction\_status, departure\_prediction\_status, pass\_through\_flag, cancellation\_flag, extra\_trip\_flag)\\\\
+\textbf{german\_trainstation}(\underline{eva}, station\_name, xml\_station\_name)\\\\
+\textbf{german\_trainline}(\underline{train\_line\_ride\_id, final\_destination\_station, train\_name}, train\_type)\\\\
+\textbf{german\_trainstop}(\underline{stop\_id}, \uwave{eva}, \uwave{train\_line\_ride\_id, final\_destination\_station, train\_name}, arrival\_change\_time, departure\_change\_time, arrival\_planned\_time, departure\_planned\_time, delay\_in\_min, train\_time, is\_canceled, train\_line\_station\_num)\\\\
+\textbf{trainstation\_weatherstation}(\underline{trainstation}, trainstation\_in\_ch, weatherstation, weatherstation\_in\_ch)\\\\
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.95\textwidth]{g5_integrated.pdf}
+\caption{ER Diagram of the final database}
+\label{fig:g5_integrated_er}
+\end{figure}
+To integrate the schema, we used the same approach for each dataset.
+This included loading one source file into a pandas DataFrame,
+loading any CSV files which needed to be extended
+(e.g., the \texttt{swiss\_trainstation} CSV),
+discarding all rows which were missing a necessary column value
+such as the primary key,
+creating DataFrames for each table related to that CSV,
+filling the DataFrames with data from the source file
+or extending them using concatenation and deduplication,
+performing a final deduplication step to catch any remaining duplicates,
+and storing all necessary DataFrames either in a new CSV file
+or in the CSV from which the data was loaded.
+After one file was processed, we repeated this procedure
+until all files had been iterated over.
+All resulting CSV files could then easily be loaded into the database
+using the \texttt{COPY} command. \cite{postgresql_copy}
+This was significantly faster than performing inserts
+for each individual data point
+and took at most 10 to 15 minutes.
+The processes differed slightly for each dataset,
+which we discuss in the following sections.\\\\
+For the German train data, we first needed to convert the monthly source files
+from Parquet to CSV
+to avoid pandas DataFrames containing columns
+with the \texttt{object} data type.\\\\
+For the German weather data, we had a large number of files
+which were separated into folders by temperature, precipitation,
+pressure, and wind speed,
+as well as by historical data ranging up to 2025
+and recent data ranging from the beginning of 2025 until now.
+Each folder contained one subfolder per weather station,
+holding both the measurement data and the station data.
+This significantly complicated the process,
+as we had to iterate over all possible file locations
+to locate all relevant data.
+Furthermore, all data was stored in text files
+formatted similarly to CSV files
+but containing additional whitespace.
+These whitespaces had to be removed
+before processing the data.
+Additionally, we needed to filter the data
+to the correct time span,
+as data from outside our specified period was present.
+To clean and normalize the data,
+cast some columns from float to int
+or from int to boolean
+to correctly represent the measurements,
+set impossible data points to NA,
+and format dates to match the PostgreSQL
+date and timestamp format.
+For the station data,
+we additionally retained only the most recently recorded metadata
+to avoid duplicated weather stations.\\\\
+For the Swiss train data, we used an artificial ID
+in the form of an increasing integer.
+This required us to load and store the current ID value
+in a JSON file for each CSV processed.
+Additionally, we filtered out all non-train events,
+as they did not fit our specified analysis goals
+and would have significantly increased the dataset size.
+Originally, the raw SBB data amounted to approximately 170 GB.
+We also formatted dates to ensure compatibility
+with the PostgreSQL date and timestamp format.\\\\
+For the Swiss weather data,
+we similarly formatted dates to the PostgreSQL
+date and timestamp format
+and filtered the data to the correct time span,
+as the dataset also contained measurements
+outside our specified period.\\\\
+The \texttt{trainstation\_weatherstation} table
+was populated only after all other tables
+had already been filled.
+We loaded all train stations and weather stations
+into pandas DataFrames
+to determine which weather station
+was closest to each train station.
+Fortunately, the weather stations
+in both the German and Swiss datasets
+were documented with latitude and longitude.
+Therefore, we only needed to determine
+the coordinates of the train stations.
+To achieve this, we used the Nominatim interface \cite{nominatim} of \texttt{geopy}
+to locate the train stations.
+We discarded all stations
+that were not located in Germany or Switzerland,
+as our analysis focused exclusively on these countries.
+This approach worked well in most cases;
+however, for approximately 40 train stations,
+the locations had to be determined manually.
+Afterwards, we constructed a k-d tree \cite{scipy_kdtree} using \texttt{scipy},
+a data structure designed to organize points
+in $k$ dimensions, which in our case was two.
+Using built-in functions,
+we then identified the closest weather station
+for each train station
+and stored the resulting data in a CSV file,
+which was again inserted into the database
+using the \texttt{COPY} command. \cite{chatgpt_spellcheck}
