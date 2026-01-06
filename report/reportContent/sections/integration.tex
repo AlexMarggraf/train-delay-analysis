@@ -5,7 +5,7 @@
 To integrate the data, we first dissected all four datasets and created corresponding ER diagrams.
 Following that, we attempted to create one large coherent schema which includes all data,
 but we ended up mostly leaving the datasets unconnected.\\\\
-For the German train data, we had one \texttt{.parquet} file for every month,
+For the German train data, we had one \texttt{.parquet} file \cite{apache_parquet} for every month,
 which we turned into three tables.
 The \texttt{german\_trainstation} table holds mostly just the station name
 but is important for classifying train events later.
@@ -113,7 +113,7 @@ or in the CSV from which the data was loaded.
 After one file was processed, we repeated this procedure
 until all files had been iterated over.
 All resulting CSV files could then easily be loaded into the database
-using the \texttt{COPY} command.
+using the \texttt{COPY} command. \cite{postgresql_copy}
 This was significantly faster than performing inserts
 for each individual data point
 and took at most 10 to 15 minutes.
@@ -179,7 +179,7 @@ in both the German and Swiss datasets
 were documented with latitude and longitude.
 Therefore, we only needed to determine
 the coordinates of the train stations.
-To achieve this, we used the Nominatim interface of \texttt{geopy}
+To achieve this, we used the Nominatim interface \cite{nominatim} of \texttt{geopy}
 to locate the train stations.
 We discarded all stations
 that were not located in Germany or Switzerland,
@@ -187,7 +187,7 @@ as our analysis focused exclusively on these countries.
 This approach worked well in most cases;
 however, for approximately 40 train stations,
 the locations had to be determined manually.
-Afterwards, we constructed a k-d tree using \texttt{scipy},
+Afterwards, we constructed a k-d tree \cite{scipy_kdtree} using \texttt{scipy},
 a data structure designed to organize points
 in $k$ dimensions, which in our case was two.
 Using built-in functions,
@@ -195,4 +195,4 @@ we then identified the closest weather station
 for each train station
 and stored the resulting data in a CSV file,
 which was again inserted into the database
-using the \texttt{COPY} command.
+using the \texttt{COPY} command. \cite{chatgpt_spellcheck}
