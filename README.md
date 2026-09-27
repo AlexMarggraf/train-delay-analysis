@@ -1,15 +1,15 @@
-# Databases Project
+# Analysis of Train Delays in Germany and Switzerland
 
-Use this repository for your integration code and any source code created while working on your project (ad-hoc code,
-SQL queries, project files needed by external tools, etc.).
+This project aims to integrate one year worth of train and weather data from Germany and Switzerland and tries to analyse the relation between weather events such as precipitation, wind, and temperature and train delays and cancelations. For an in-depth description on how data was gained, integrated, and analysed please see the report under report/g5_final_report.pdf.
 
-- Merge your code into the `main` branch on the due date. 
-- __Do not__ commit datasets!
-- Any other document (except for the dump in the final hand-in) should be handed-in via ADAM.
+## Outlook on our findings
 
-If you have any questions regarding the project, please do not hesitate to ask during the exercise lessons or via mail
-to [luc.heitz@unibas.ch](mailto:luc.heitz@unibas.ch)!
+In this section we will show some results that we've obtained to further show what we have done.
 
-It is recommended that you first create a ```.gitignore``` file. (And exclude the "datasets" folder, for example). A useful tool for creating ```.gitignore``` files is www.gitignore.io.
+![Average Delay in Switzerland](analysis/choropleth/avg_delay_ch.svg)
 
-Replace this readme file with a short description of your project and your goals, as early as possible but no later than MS2 hand-in.
+![Total Train Stops in Switzerland](analysis/choropleth/tot_stops_ch.svg)
+
+![Average Delay in Germany](analysis/choropleth/avg_delay_de.svg)
+
+![Total Train Stops in Germany](analysis/choropleth/tot_stops_de.svg)
